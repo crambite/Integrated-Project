@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>game</title>
+
+    <link rel="stylesheet" href="text_editor/text_editor.css">
+
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.29.1/full/pyodide.js"></script>
+    <script src="to_python.js" defer></script>
+    <script src="text_editor/text_editor.js" defer></script>
+</head>
+<body>
+    <!-- Text Editor -->
+    <div class="text_editor">
+        <div class="title_bar">
+            <!-- Sends code to Pyodide to get output-->
+            <button class="run" onclick="evaluatePython()">Run</button>
+            <div class="window_controls">
+                <button class="minimise"></button>
+                <button class="maximise"></button>
+            </div>
+        </div>
+
+        <textarea id="code"></textarea>
+    </div>
+
+    <!-- Testing for Text Editor (Should be deleted later) -->
+    <div class="output_console">
+        <p>Output:</p>
+        <textarea id="output" disabled></textarea>
+    </div>
+
+</body>
+</html>
