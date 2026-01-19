@@ -1,2 +1,2 @@
 # Integrated-Project
-Ngee Ann Poly Year 1 Sem 2 Integrated Project
+## Game that teaches you how to code in python
