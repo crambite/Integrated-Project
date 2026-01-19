@@ -28,11 +28,11 @@
 
         async function main() {
             try {
-            const pyodide = await loadPyodide({
-                indexURL: "https://cdn.jsdelivr.net/pyodide/v0.29.1/full/"
-            });
-            outputEl.value += "Ready!\n";
-            return pyodide;
+                const pyodide = await loadPyodide({
+                    indexURL: "https://cdn.jsdelivr.net/pyodide/v0.29.1/full/"
+                });
+                outputEl.value += "Ready!\n";
+                return pyodide;
             } 
             catch (e) {
                 outputEl.value += "Failed to load Pyodide:\n" + e + "\n";
