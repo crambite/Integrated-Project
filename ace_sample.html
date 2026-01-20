@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>ACE in Action</title>
+<style type="text/css" media="screen">
+    .edit_container {
+        display: flex;
+        position: fixed;
+        resize: both;
+        overflow: auto;
+        width: 30rem;
+        height: 20rem;
+        background-color: black;
+    }
+    #editor { 
+        z-index: 999;
+        flex: 1;
+    }
+</style>
+</head>
+<body>
+
+    <div class="edit_container">
+        <div id="editor"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.43.3/ace.js"></script>
+    <script>
+        const container = document.querySelector(".edit_container");
+        const editor = document.querySelector("#editor");
+        
+        const aceEditor = ace.edit(editor, {
+            theme: "ace/theme/github_dark",
+            mode: "ace/mode/python",
+            selectionStyle: "text"
+        });
+
+        window.onload() = () => {
+            aceEditor.resize();
+        };
+
+        //verify that the browser supports resize observer
+        if (window.ResizeObserver) {
+            new ResizeObserver(() => aceEditor.resize()).observe(container);
+        }
+    </script>
+</body>
+</html>

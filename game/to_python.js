@@ -7,7 +7,7 @@ function addToOutput(output) {
 }
 
 //Initialises Pyodide
-outputEl.value = "Initializing...\n";
+outputEl.value = "Initializing...\n"; //can be deleted in final draft
 
 async function main() {
     try {
@@ -15,12 +15,12 @@ async function main() {
             indexURL: "https://cdn.jsdelivr.net/pyodide/v0.29.1/full/"  // forces Pyodide to look only in the URL
         });
 
-        outputEl.value += "Ready!\n---------------\n"; 
+        outputEl.value += "Ready!\n---------------\n"; //can be deleted in final draft
         return pyodide;
     } 
 
     catch (e) {
-        outputEl.value += "Failed to load Pyodide:\n" + e + "\n";
+        outputEl.value += "Failed to load Pyodide:\n" + e + "\n"; //can be deleted in final draft
         throw e;
     }
 }
@@ -38,7 +38,8 @@ async function evaluatePython() {
             sys.stdout = StringIO()
         `);
 
-        const result = pyodide.runPython(codeEl.value);
+        const code = aceEditor.getValue(); // get code from Ace editor
+        const result = pyodide.runPython(code);
         const printed = pyodide.runPython("sys.stdout.getvalue()"); //allow us to output print() properly
         addToOutput(printed || result);
     } 

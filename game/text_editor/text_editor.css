@@ -31,12 +31,9 @@
 }
 #code{  
     flex: 1;
-    resize: none;
-    border: none;
-    outline: none;
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
 }
+
+/* can be deleted in final draft */
 .output_console{
     top: 30rem;
     position: absolute;

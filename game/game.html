@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="text_editor/text_editor.css">
 
     <script src="https://cdn.jsdelivr.net/pyodide/v0.29.1/full/pyodide.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.43.3/ace.js"></script>
+    <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8" defer></script>
     <script src="to_python.js" defer></script>
     <script src="text_editor/text_editor.js" defer></script>
 </head>
@@ -19,12 +21,12 @@
             <!-- Sends code to Pyodide to get output-->
             <button class="run" onclick="evaluatePython()">Run</button>
             <div class="window_controls">
-                <button class="minimise"></button>
-                <button class="maximise"></button>
+                <button class="minimise">—</button>
+                <button class="maximise">🗖</button>
             </div>
         </div>
 
-        <textarea id="code"></textarea>
+        <div id="code"></div>
     </div>
 
     <!-- Testing for Text Editor (Should be deleted later) -->

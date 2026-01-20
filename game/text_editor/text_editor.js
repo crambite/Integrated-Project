@@ -5,11 +5,26 @@ let is_dragging = false;
 let is_minimise = false;
 let is_maximise = false;
 
-text_editor = document.querySelector(".text_editor");
-handle = document.querySelector(".title_bar");
-text_area = document.querySelector("#code");
-minimise = document.querySelector(".minimise");
-maximise = document.querySelector(".maximise");
+const text_editor = document.querySelector(".text_editor");
+const handle = document.querySelector(".title_bar");
+const text_area = document.querySelector("#code");
+const minimise = document.querySelector(".minimise");
+const maximise = document.querySelector(".maximise");
+
+//Ace text editor
+const aceEditor = ace.edit(text_area, {
+    theme: "ace/theme/github_dark",
+    mode: "ace/mode/python",
+    selectionStyle: "text"
+});
+
+//ensure that Ace sizes properly
+window.onload = () => {
+    aceEditor.resize();
+};
+
+//resize Ace editor (Ace dosent allow resize without the custom function)
+new ResizeObserver(() => aceEditor.resize()).observe(text_editor);
 
 //drag logic
 handle.addEventListener("mousedown", (e) => {
@@ -78,7 +93,7 @@ minimise.addEventListener("click", (e) => {
         text_editor.style.minHeight = save_minheight;
         text_editor.style.height = save_height;
         text_editor.style.resize = "both";
-
+        
         is_minimise = false;
     }
 });
