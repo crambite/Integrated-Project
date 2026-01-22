@@ -7,32 +7,42 @@
     <title>game</title>
 
     <link rel="stylesheet" href="text_editor/text_editor.css">
+    <link rel="stylesheet" href="game.css">
 
     <script src="https://cdn.jsdelivr.net/pyodide/v0.29.1/full/pyodide.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.43.3/ace.js"></script>
-    <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8" defer></script>
     <script src="to_python.js" defer></script>
     <script src="text_editor/text_editor.js" defer></script>
+    <script type="module" src="game.js" defer></script>
 </head>
 <body>
-    <!-- Text Editor -->
-    <div class="text_editor">
-        <div class="title_bar">
-            <!-- Sends code to Pyodide to get output-->
-            <button class="run" onclick="evaluatePython()">Run</button>
-            <div class="window_controls">
-                <button class="minimise">—</button>
-                <button class="maximise">🗖</button>
-            </div>
-        </div>
-
-        <div id="code"></div>
+    <!-- Game Console -->
+    <div id="game_console">
+        <!-- Game Board -->
+        <canvas id="board"></canvas>
     </div>
 
-    <!-- Testing for Text Editor (Should be deleted later) -->
-    <div class="output_console">
-        <p>Output:</p>
-        <textarea id="output" disabled></textarea>
+    <!--Code Console-->
+    <div id="code_console">
+        <!-- Text Editor -->
+        <div class="text_editor">
+            <div class="title_bar">
+                <!-- Sends code to Pyodide to get output-->
+                <button class="run" onclick="evaluatePython()">Run</button>
+                <div class="window_controls">
+                    <button class="minimise">—</button>
+                    <button class="maximise">🗖</button>
+                </div>
+            </div>
+
+            <div class="code"></div>
+        </div>
+
+        <!-- Testing for Text Editor (To be replace for function cheatsheet) -->
+        <div class="output_console">
+            <p>Output:</p>
+            <textarea id="output" disabled></textarea>
+        </div>
     </div>
 
 </body>

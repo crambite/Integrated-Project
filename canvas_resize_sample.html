@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+           display: flex;
+           background-color: aqua;
+        }
+        #box{
+            min-width: 0;
+            flex: 1;
+            height: 100vh;
+            background-color: aliceblue;
+        }
+        #board{
+            flex: 1;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <canvas id="board"></canvas>
+    </div>
+
+    <script>
+        let board, context
+        const tile_size = 48;
+        const columns = 24;
+        const rows = 16
+        const board_height = rows * tile_size;
+        const board_width = columns * tile_size;
+
+        const boundary = document.getElementById("box")
+
+        function resizeCanvas() {
+            const rect = boundary.getBoundingClientRect()
+            const scaleX = rect.width / board_width;
+            const scaleY = rect.height / board_height;
+            const scale  = Math.min(scaleX, scaleY);
+
+            board.style.width = (board_width * scale) + "px";
+            board.style.height = (board_height * scale) + "px";
+        }
+
+        //Draw the assets in the game console
+        function draw() {
+            context.clearRect(0, 0, board_width, board_height);
+        };
+
+        window.onload = () => {
+            board = document.getElementById("board");
+            board.height = board_height;
+            board.width = board_width;
+            context = board.getContext("2d");
+            resizeCanvas();
+            draw();
+        };
+
+        window.onresize = resizeCanvas;
+        
+    </script>
+</body>
+</html>

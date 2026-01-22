@@ -3,17 +3,19 @@
     min-width: 10rem;
     height: 30rem;
     min-height: 10rem;
-    padding: 3px;
-    z-index: 999;
+    padding: 3px; /* adds a border within the text editor */
+    z-index: 999; /* text editor should appear over everything */
+
     position: fixed;
     display: flex;
     flex-direction: column;
     resize: both;
-    overflow: auto;
+    overflow: auto; /* allow the resize drag to be seen */
     background-color: rgb(92, 92, 92);
 }
 .title_bar{
-    margin: 0.5rem;
+    margin: 0.5rem; /* pushes the buttons inwards */
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -29,14 +31,14 @@
     width: 2rem;
     height: 2rem;
 }
-#code{  
+.code{  
     flex: 1;
 }
 
-/* can be deleted in final draft */
+/* replace with function cheatsheet for final draft */
 .output_console{
     top: 30rem;
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -49,4 +51,5 @@
 
 /* mobile:
 the text editor will just fill up whole screen, so no need mobile first for this
+likewise for the game console
 */
