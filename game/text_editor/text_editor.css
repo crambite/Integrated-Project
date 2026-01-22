@@ -1,8 +1,13 @@
+#code_console{
+    margin: 0;
+    padding: 0;
+    width: 40rem;
+}
 .text_editor{
     width: 40rem;
-    min-width: 10rem;
+    min-width: 10rem; /* limits resize to this width so all buttons can still be seen */
     height: 30rem;
-    min-height: 10rem;
+    min-height: 10rem; /* limits resize to this width so all buttons can still be seen */
     padding: 3px; /* adds a border within the text editor */
     z-index: 999; /* text editor should appear over everything */
 
@@ -32,7 +37,7 @@
     height: 2rem;
 }
 .code{  
-    flex: 1;
+    flex: 1; /* let the text area fill up any available space */
 }
 
 /* replace with function cheatsheet for final draft */
@@ -50,6 +55,5 @@
 }
 
 /* mobile:
-the text editor will just fill up whole screen, so no need mobile first for this
-likewise for the game console
+below 1369px (width), cut text editor size width to 15rem and height to 10rem for code console, text editor and output
 */
