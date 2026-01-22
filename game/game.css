@@ -7,15 +7,12 @@ body{
 }
 #game_console {
     height: 100vh;
-    flex: 1;
-    min-width: 0;
+    flex: 1; /* makes the console fill up any available space */
+    min-width: 0; /* allows to be scaled down infinitely */
 
     text-align: center;
 }
 #board{
-    min-width: 0;
+    min-width: 0; /* allows to be scaled down infinitely */
     background-color: black;
-}
-#code_console{
-width: 40rem;
 }

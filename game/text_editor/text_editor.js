@@ -76,7 +76,7 @@ minimise.addEventListener("click", (e) => {
         save_height = text_editor.style.height
 
         //setting the text editor to look minimised
-        text_editor.style.minHeight = 0;
+        text_editor.style.minHeight = 0; //remove the original restrictions
         text_editor.style.height = 3.5 + "rem";
         text_editor.style.resize = "none";
 
