@@ -53,7 +53,7 @@ text_editor.addEventListener("mousemove", (e) => {
 });
 
 //minimise logic
-minimise.addEventListener("click", (e) => {
+minimise.addEventListener("click", () => {
 
     //strict minimise maximise (if minimised cannot click maximise vice versa)
     if (is_maximise) {
@@ -94,7 +94,7 @@ minimise.addEventListener("click", (e) => {
 });
 
 //maximise logic
-maximise.addEventListener("click", (e) => {
+maximise.addEventListener("click", () => {
 
     //strict minimise maximise (if minimised cannot click maximise vice versa)
     if (is_minimise) {
