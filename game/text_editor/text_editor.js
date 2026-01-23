@@ -18,11 +18,6 @@ const aceEditor = ace.edit(text_area, {
     selectionStyle: "text"
 });
 
-//ensure that Ace sizes properly
-window.onload = () => {
-    aceEditor.resize();
-};
-
 //resize Ace editor (Ace dosent allow resize without the custom function)
 new ResizeObserver(() => aceEditor.resize()).observe(text_editor);
 
