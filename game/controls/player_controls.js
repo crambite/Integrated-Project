@@ -1,29 +1,22 @@
-export function player_controller({get_player, draw}) {
+export function player_controller(queue) {
 
     //movement
     function forward() {
-        const player = get_player();
-        player.move_forward();
-        draw();
+        queue.push("forward")
     };
 
     function backward() {
-        const player = get_player();
-        player.move_backward();
-        draw();
+        queue.push("backward")
     };
 
     function left() {
-        const player = get_player();
-        player.move_left();
-        draw();
+        queue.push("left")
     };
 
     function right() {
-        const player = get_player();
-        player.move_right();
-        draw();
+        queue.push("right")
     };
 
+    //return as an object to store in variable
     return{forward, backward, left, right};
 };

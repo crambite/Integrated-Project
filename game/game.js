@@ -32,6 +32,9 @@ map = [
     "wwwwwwwwwwwwwwwwwwwwwwww",
 ]
 
+//function queue
+let queue = []
+
 //image
 const player_image = new Image();
 player_image.src = "../assets/characters/robot.jpg";
@@ -89,14 +92,32 @@ function draw() {
 
 //updates the game
 function update() {
-    draw();
 
-    //store player controls in the window for pyodide to reference
-    const player_controls = player_controller({get_player: () => {return player}, draw})
-    window.player_controls = player_controls ;
+    //check that queue isnt empty
+    if (queue.length === 0) {
+        return
+    }
 
-    //gives a "green light" when player controls are fully loaded
-    window.dispatchEvent(new Event("player-controls-ready"));
+    //gets the first instruction from the queue
+    const instruction = queue[0]
+
+    //checks the instruction and executes it
+    if (instruction === "forward") {
+        player.move_forward()
+    }
+    else if (instruction === "backward") {
+        player.move_backward()
+    }
+    else if (instruction === "left") {
+        player.move_left()
+    }
+    else if (instruction === "right") {
+        player.move_right()
+    }
+
+    draw()
+
+    queue.shift()
 };
 
 //initialise board
@@ -109,8 +130,20 @@ window.onload = () => {
     resize(); //ensure that text editor is the right size
 
     get_coords(map);
-    update();
+
+    draw();
+
+    //store player controls in the window for pyodide to reference
+    const player_controls = player_controller(queue)
+    window.player_controls = player_controls;
+
+    //gives a "green light" when player controls are fully loaded
+    window.dispatchEvent(new Event("player-controls-ready"));
+
+    const interval = setInterval(update, 500)
 };
 
 //resize board
 window.onresize = resize;
+
+
