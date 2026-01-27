@@ -16,3 +16,8 @@ body{
     min-width: 0; /* allows to be scaled down infinitely */
     background-color: black;
 }
+#code_console{
+    margin: 0;
+    padding: 0;
+    width: 40rem;
+}

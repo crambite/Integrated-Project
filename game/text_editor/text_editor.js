@@ -18,11 +18,6 @@ const aceEditor = ace.edit(text_area, {
     selectionStyle: "text"
 });
 
-//ensure that Ace sizes properly
-window.onload = () => {
-    aceEditor.resize();
-};
-
 //resize Ace editor (Ace dosent allow resize without the custom function)
 new ResizeObserver(() => aceEditor.resize()).observe(text_editor);
 
@@ -58,7 +53,7 @@ text_editor.addEventListener("mousemove", (e) => {
 });
 
 //minimise logic
-minimise.addEventListener("click", (e) => {
+minimise.addEventListener("click", () => {
 
     //strict minimise maximise (if minimised cannot click maximise vice versa)
     if (is_maximise) {
@@ -99,7 +94,7 @@ minimise.addEventListener("click", (e) => {
 });
 
 //maximise logic
-maximise.addEventListener("click", (e) => {
+maximise.addEventListener("click", () => {
 
     //strict minimise maximise (if minimised cannot click maximise vice versa)
     if (is_minimise) {
