@@ -1,0 +1,31 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual Novel</title>
+  <link rel="stylesheet" href="visual_novel.css">
+</head>
+
+<body>
+  <main class="frame">
+
+    <section class="content">
+      <div class="dialogue">
+        <span id="speaker">SYSTEM</span>
+        <div id="story_text"></div>
+      </div>
+
+      <div class="footerline"></div>
+
+      <div class="controls">
+        <div class="hint">
+        </div>
+
+        <div style="display:flex; gap:10px;">
+          <button class="btn" id="btn_skip" type="button" onclick ="skipText()">Skip / Next</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+<script src="visual_novel.js"></script>

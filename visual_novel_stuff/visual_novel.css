@@ -1,0 +1,145 @@
+/* layout */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: flex-end;      /* UI at bottom */
+  justify-content: center;
+  color: #d7f9ff;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  overflow: hidden;           /* prevent scrollbars from fixed layers */
+}
+
+/* ===== 3D / Background layer ===== */
+#canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;                 /* interactive background layer */
+  pointer-events: auto;       /* allow interaction */
+  background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+}
+
+/* ===== UI layer ===== */
+.content {
+  position: relative;
+  z-index: 2;                 /* above canvas */
+  width: min(920px, 92vw);
+  pointer-events: none;       /* let clicks pass through to canvas by default */
+  padding-bottom: 20px;
+}
+
+/* re-enable interaction for actual UI controls */
+#btn_skip,
+#story_text,
+.dialogue,
+.controls,
+.hint {
+  pointer-events: auto;
+}
+
+/* optional: keep text readable over any background */
+#story_text {
+  min-height: 3.6em;
+  padding: 18px 18px 6px;
+  border-radius: 16px;
+
+  background: rgba(11, 19, 38, 0.72);
+  border: 1px solid rgba(25, 242, 255, 0.24);
+  box-shadow:
+      0 0 0 1px rgba(25, 242, 255, 0.08) inset,
+      0 18px 60px rgba(0, 0, 0, 0.55),
+      0 0 40px rgba(25, 242, 255, 0.10);
+
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 16px;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  white-space: pre-wrap;
+  text-shadow: 0 0 14px rgba(25, 242, 255, 0.08);
+
+  position: relative;
+  overflow: hidden;
+}
+
+#story_text::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(25, 242, 255, 0.10), transparent);
+  transform: translateX(-60%);
+  animation: vn_sweep 4.5s linear infinite;
+  opacity: 0.9;
+}
+
+@keyframes vn_sweep {
+  0%   { transform: translateX(-70%); }
+  100% { transform: translateX(70%); }
+}
+
+/* ===== Skip button ===== */
+#btn_skip {
+  appearance: none;
+  cursor: pointer;
+  padding: 8px 14px;
+  margin-top: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(25, 242, 255, 0.22);
+  background: rgba(11, 19, 38, 0.65);
+  color: #d7f9ff;
+
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  box-shadow:
+      0 0 0 1px rgba(25, 242, 255, 0.06) inset,
+      0 8px 22px rgba(0, 0, 0, 0.45);
+
+  transition:
+      background 0.15s ease,
+      border-color 0.15s ease,
+      box-shadow 0.15s ease,
+      transform 0.08s ease;
+}
+
+#btn_skip:hover {
+  background: rgba(11, 19, 38, 0.8);
+  border-color: rgba(25, 242, 255, 0.45);
+  box-shadow:
+      0 0 0 1px rgba(25, 242, 255, 0.12) inset,
+      0 0 24px rgba(25, 242, 255, 0.12);
+}
+
+#btn_skip:active {
+  transform: translateY(1px);
+  box-shadow:
+      0 0 0 1px rgba(25, 242, 255, 0.12) inset,
+      0 4px 14px rgba(0, 0, 0, 0.55);
+}
+
+/* Force horizontal layout on portrait */
+@media (orientation: portrait) {
+  body {
+    transform: rotate(90deg);
+    transform-origin: center center;
+
+    width: 100vh;
+    height: 100vw;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+
+    overflow: hidden;
+  }
+
+  html {
+    overflow: hidden;
+  }
+}

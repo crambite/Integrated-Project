@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visual Novel Screen</title>
+  <style>
+    body {
+      margin: 0;
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.131/build/three.module.js",
+        "jsm/": "https://cdn.jsdelivr.net/npm/three@0.131/examples/jsm/"
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="visual_novel.css">
+
+</head>
+<body>
+    <section class="content">
+      <div class="dialogue">
+        <span id="speaker">SYSTEM</span>
+        <div id="story_text"></div>
+      </div>
+
+      <div class="footerline"></div>
+
+      <div class="controls">
+        <div class="hint">
+        </div>
+
+        <div style="display:flex; gap:10px;">
+          <button class="btn" id="btn_skip" type="button" onclick ="skipText()">Skip / Next</button>
+        </div>
+      </div>
+    </section>
+    <div id="canvas"></div>
+
+<script type="module" src="index.js"></script>
+<script src="visual_novel.js"></script>
+</body>
+</html>
