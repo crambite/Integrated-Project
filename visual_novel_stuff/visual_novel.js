@@ -29,11 +29,9 @@ function printText(targetText) {
         const currentLen = block_element.textContent.length;
 
         if (currentLen < targetLength) {
-            console.log(currentLen, targetLength)
             block_element.textContent = targetText.slice(0, currentLen + 1);
         } 
         else {
-            console.log(textIndex)
             clearInterval(intervalID);
             intervalID = null;
             textingEnded = true;
