@@ -11,7 +11,7 @@
 
     <script src="https://cdn.jsdelivr.net/pyodide/v0.29.1/full/pyodide.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.43.3/ace.js"></script>
-    <script src="to_python.js" defer></script>
+    <script src="text_editor/pyodide.js" defer></script>
     <script src="text_editor/text_editor.js" defer></script>
     <script type="module" src="game.js" defer></script>
 </head>
@@ -29,6 +29,7 @@
             <div class="title_bar">
                 <!-- Sends code to Pyodide to get output-->
                 <button class="run" onclick="evaluatePython()">Run</button>
+
                 <div class="window_controls">
                     <button class="minimise">—</button>
                     <button class="maximise">🗖</button>
