@@ -34,12 +34,16 @@ gltfLoader.load('./assets/integratedProject.glb', (gltf) =>{
 
 
 
-const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 5);
+const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
 scene.add(hemiLight);
 
 const sunLight = new THREE.DirectionalLight(0xffffff, 5);
-sunLight.position.set(5, 0, 1);
+sunLight.position.set(5, 2, 1);
 scene.add(sunLight);
+
+const backLight = new THREE.DirectionalLight(0xffffff, 3);
+backLight.position.set(-5, 2, -1);
+scene.add(backLight);
 
 
 // Sprites BG
