@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Functions Cheatsheet</title>
+  <link rel="stylesheet" href="functions.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar_inner">
+      <h1>Game Functions Cheatsheet</h1>
+      <nav class="nav">
+        <a href="../index.html">Back</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="panel">
+      <div class="panel_head">
+        <h2>Movement functions</h2>
+      </div>
+
+      <div class="shortcut_list">
+        <div class="row">
+          <div class="keys">
+            <span class="keycap">front()</span>
+          </div>
+          <div class="desc">Moves the object forward.</div>
+        </div>
+
+        <div class="row">
+          <div class="keys">
+            <span class="keycap">back()</span>
+          </div>
+          <div class="desc">Moves the object backward.</div>
+        </div>
+
+        <div class="row">
+          <div class="keys">
+            <span class="keycap">left()</span>
+          </div>
+          <div class="desc">Moves the player or object to the left.</div>
+        </div>
+
+        <div class="row">
+          <div class="keys">
+            <span class="keycap">right()</span>
+          </div>
+          <div class="desc">Moves the player or object to the right.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel_head">
+        <h2>Variables</h2>
+      </div>
+
+      <div class="shortcut_list">
+        <div class="row">
+          <div class="keys"><span class="keycap">is_intersection()</span></div>
+          <div class="desc">Returns true if the current position has 3 or more connected squares.</div>
+        </div>
+
+        <div class="row">
+          <div class="keys"><span class="keycap">is_deadend()</span></div>
+          <div class="desc">Returns true if the current position has only one connected square.</div>
+        </div>
+
+        <div class="row">
+          <div class="keys"><span class="keycap">is_enemy_in_radius(r)</span></div>
+          <div class="desc">Returns true if an enemy is within the specified radius.</div>
+        </div>
+
+        <div class="row">
+          <div class="keys"><span class="keycap">player_x()</span></div>
+          <div class="desc">Returns the x-coordinate of the player.</div>
+        </div>
+
+        <div class="row">
+          <div class="keys"><span class="keycap">player_y()</span></div>
+          <div class="desc">Returns the y-coordinate of the player.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel_head">
+        <h2>Robot functions</h2>
+      </div>
+
+      <div class="shortcut_list">
+        <div class="row">
+          <div class="keys"><span class="keycap">light()</span></div>
+          <div class="desc">Turns on the robot's light.</div>
+        </div>
+
+        <div class="row">
+          <div class="keys"><span class="keycap">shoot()</span></div>
+          <div class="desc">Fires a projectile from the robot.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer_inner">
+      <p>&copy; 2024 Game Development Team</p>
+    </div>
+  </footer>
+</body>
+</html>
