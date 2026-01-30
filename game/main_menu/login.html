@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login • Blackbox Protocol</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="screen">
+    <section class="panel">
+      <header class="header">
+        <h1 class="title">Sign in to continue</h1>
+      </header>
+
+      <form class="form" autocomplete="on">
+        <label class="field">
+          <span class="label">Username</span>
+          <input class="input" type="text" name="username" placeholder="Enter username" required />
+        </label>
+
+        <label class="field">
+          <span class="label">Password</span>
+          <input class="input" type="password" name="password" placeholder="Enter password" required />
+        </label>
+
+        <button class="primary-btn" type="submit" onclick="window.location.href='menu.html'">Login</button>
+
+        <a class="links" href="#" aria-disabled="true">Create account</a>
+        <a class="links" href="#" aria-disabled="true">Forgot password?</a>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    /*document.querySelector("form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert("Login clicked (wire this to your auth next).");
+    });*/
+  </script>
+</body>
+</html>
