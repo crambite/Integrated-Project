@@ -1,6 +1,9 @@
 import { Obj } from "./entities/obj.js";
 import { player_controller } from "./controls/player_controls.js"
 
+//run button
+const run = document.querySelector(".run")
+
 //board 
 let board, context
 const tile_size = 48;
@@ -15,22 +18,25 @@ const boundary = document.getElementById("game_console");
 let map;
 map = [
     "wwwwwwwwwwwwwwwwwwwwwwww",
-    "w p     w              w",
-    "w wwww  w  wwwwwwwww   w",
-    "w w     w        w     w",
-    "w w  wwwwwwwww   w  wwww",
-    "w w        w     w     w",
-    "w wwwwwww  w  wwwwwww  w",
-    "w      w   w        w  w",
-    "wwww   w   wwwwwww  w  w",
-    "w      w         w  w  w",
-    "w  wwwwwwwwwww   w  w  w",
-    "w              w w  w  w",
-    "w  wwwwwwwwwww w w  w  w",
-    "w            w   w     w",
-    "w              w       w",
+    "wwwwwwwwwwwwwwwwwwwwwwww",
+    "wwwwwwwwwwwwwwwwwwwwwwww",
+    "wwwwwwwwwwwwwwwwwwwwwwww",
+    "wwwwwwwwwwwwwwwwwwwwwwww",
+    "wwwwwwwwwe iwwwwwwwwwwww",
+    "wwwwwwwwwww wwwwwwwwwwww",
+    "wwwwwwwwwwwpwwwwwwwwwwww",
+    "wwwwwwwwwwwwwwwwwwwwwwww",
+    "wwwwwwwwwwwwwwwwwwwwwwww",
+    "wwwwwwwwwwwwwwwwwwwwwwww",
+    "wwwwwwwwwwwwwwwwwwwwwwww",
+    "wwwwwwwwwwwwwwwwwwwwwwww",
+    "wwwwwwwwwwwwwwwwwwwwwwww",
+    "wwwwwwwwwwwwwwwwwwwwwwww",
     "wwwwwwwwwwwwwwwwwwwwwwww"
 ];
+
+//intersections
+let intersections = new Set();
 
 //fow
 let fow;
@@ -54,18 +60,39 @@ fow = [
 ];
 
 //function queue
-let queue = []
+let queue = [];
 
 //turns
-let turns = 1
+let turns = 1;
 
 //player
 let player;
 
+//shoot state
+let is_shooting = false;
+window.shoot = {start_x : 0, start_y : 0 , end_x : 0, end_y : 0};
+
+//ghost
+let ghost;
+
+//enemy
+let enemies = new Set();
+
 //walls
 let walls = new Set();
 
+//game loop
+let interval;
+
+//counter used in functions (enemy_turn)
+let count = 0
+
 //images
+
+//enemy
+const enemy_image = new Image();
+enemy_image.src = "../assets/characters/enemy.png";
+
 //player
 const player_image = new Image();
 player_image.src = "../assets/characters/robot.jpg";
@@ -96,6 +123,13 @@ function get_coords(map) {
             }
             else if (map[y][x] === "p") {
                 player = new Obj(x * tile_size, y * tile_size, tile_size, tile_size);
+                ghost = new Obj(x * tile_size, y * tile_size, tile_size, tile_size);
+            }
+            else if (map[y][x] === "i") {
+                intersections.add(new Obj(x * tile_size, y * tile_size, tile_size, tile_size));
+            }
+            else if (map[y][x] === "e") {
+                enemies.add(new Obj(x * tile_size, y * tile_size, tile_size, tile_size))
             }
         }
     }
@@ -126,7 +160,7 @@ function draw() {
         context.drawImage(wall_image, wall.x, wall.y, wall.width, wall.height);
     }
 
-    //draw fow
+    //draw fow (dosent use sets)
     for (let y = 0; y < fow.length; y++) {
         for (let x = 0; x < fow[y].length; x++) {
             //check if fog has been cleared
@@ -140,58 +174,171 @@ function draw() {
 
     //draw player
     context.drawImage(player_image, player.x, player.y, player.width, player.height);
+
+    //draw enemy
+    for (let enemy of enemies) {
+        context.drawImage(enemy_image, enemy.x, enemy.y, enemy.width, enemy.height);
+    }
+
+    //draw bullet ray if player shoots
+    if (is_shooting) {
+            //bullet ray settings
+            context.strokeStyle = "red";
+            context.lineWidth = 4;
+
+            context.beginPath();
+            context.moveTo(window.shoot.start_x, window.shoot.start_y);
+            context.lineTo(window.shoot.end_x, window.shoot.end_y);
+            context.stroke();
+
+            //auto clear the bullet ray
+            setTimeout(draw, 500)
+    }
 };
 
-//updates the game
-function update() {
-
-    //get player's previous coordinates in case theres collision
-    let old_x = player.x;
-    let old_y = player.y;
-
-    //check that queue isnt empty
+//updates the game on the player's turn
+function player_turn() {
+    //check for turn end
     if (queue.length === 0) {
-        return
+        turns += 1;
+
+        //start enemy turn
+        alert("enemy turn");
+
+        clearInterval(interval);
+        interval = null;
+        interval = setInterval(() => {enemy_turn(2)}, 500);
+
+        return;
     }
 
     //gets the first instruction from the queue
     const instruction = queue[0];
 
     //checks the instruction and executes it
-    if (instruction === "forward") {
-        player.move_forward();
+    if (instruction === "up") {
+        player.up();
     }
-    else if (instruction === "backward") {
-        player.move_backward();
+    else if (instruction === "down") {
+        player.down();
     }
     else if (instruction === "left") {
-        player.move_left();
+        player.left();
     }
     else if (instruction === "right") {
-        player.move_right();
+        player.right();
     }
+    else if (instruction === "shoot") {
+        //allows us to draw the shot
+        is_shooting = true;
 
-    //detect collision
-    for (let wall of walls) {
-        if (!player.collision(wall)) {
-            continue
-        }
-
-        player.x = old_x;
-        player.y = old_y;
+        player.shoot(enemies);
     }
 
     //clear fow
     fow = player.clear_fow(fow);
 
+    //check if player collided with enemy (done here as ghost dosent need to care about death to enemy)
+    if (player.collision(enemies)) {
+        alert("You died");
 
-    //update turns
-    turns += 1;
+        reset();
+
+        return;
+    }
 
     draw();
 
     queue.shift();
+
+    //reset shooting back to original state
+    is_shooting = false;
+    window.shoot = {start_x : 0, start_y : 0 , end_x : 0, end_y : 0};
 };
+
+//updates the game on enemy turn
+function enemy_turn(steps) {
+    player.move(enemies);
+
+    //check for collision for enemies
+    if (player.collision(enemies)) {
+        alert("You died");
+
+        reset();
+
+        return;
+    }
+
+    draw();
+    count++
+
+    //stops moving the enemy when it has moved its specified number of syeps and brings it back to the player's turn
+    if (count === steps) {
+        alert(`turn: ${turns}`);
+
+        //reset count for next use
+        count = 0;
+        
+        //stop updating the game until the next time player presses run
+        clearInterval(interval);
+        interval = null;
+    }
+
+}
+
+
+//reset game back to start
+function reset() {
+    //stop game from updating
+    clearInterval(interval);
+    interval = null;
+
+    //resetting or clearing everything
+    queue.length = 0;
+    turns = 1;
+    is_shooting = false;
+    window.shoot = { start_x: 0, start_y: 0, end_x: 0, end_y: 0 };
+    count = 0
+
+    walls.clear();
+    enemies.clear();
+    intersections.clear();
+
+    fow = [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+    ];
+
+    player = null;
+    ghost = null;
+
+    get_coords(map);
+    fow = player.clear_fow(fow);
+
+    //updates the references
+    window.walls = walls;
+    window.intersections = intersections;
+    window.ghost = ghost;
+
+    window.player_controls = player_controller(queue, ghost);
+    window.dispatchEvent(new Event("player-controls-ready"));
+
+    draw();
+}
 
 //initialise board
 window.onload = () => {
@@ -205,20 +352,30 @@ window.onload = () => {
     //initialise game
     get_coords(map); 
     fow = player.clear_fow(fow);
+    window.walls = walls;
+    window.intersections = intersections;
+    window.ghost = ghost;
 
     draw();
 
     //store player controls in the window for pyodide to reference
-    const player_controls = player_controller(queue);
+    const player_controls = player_controller(queue, ghost);
     window.player_controls = player_controls;
 
     //gives a "green light" when player controls are fully loaded
     window.dispatchEvent(new Event("player-controls-ready"));
-
-    const interval = setInterval(update, 500);
 };
 
 //resize board
 window.onresize = resize;
 
+//run only when "run" is clicked
+run.addEventListener("click", () => {
+    //prevents multiple clicks
+    if (interval) {
+        console.log("spam run")
+        return;
+    }
 
+    interval = setInterval(player_turn, 500);
+});
