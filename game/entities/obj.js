@@ -4,24 +4,66 @@ export class Obj{
         this.y = y
         this.width = width
         this.height = height
+        this.old_x = 0
+        this.old_y = 0
     };
 
-    //movement
-    move_forward() {
+    /* movement
+    collision is done here to make allow ghost to have collision */
+    up() {
+        //save old coords for collision
+        this.old_y = this.y
+
         this.y -= this.height
+
+        if (this.collision(window.walls)) {
+            this.y = this.old_y
+        }
     };
 
-    move_backward() {
+    down() {
+        //save old coords for collision
+        this.old_y = this.y
+
         this.y += this.height
+
+        if (this.collision(window.walls)) {
+            this.y = this.old_y
+        }
     };
 
-    move_left() {
+    left() {
+        //save old coords for collision
+        this.old_x = this.x
+
         this.x -= this.width
+
+        if (this.collision(window.walls)) {
+            this.x = this.old_x
+        }
     };
 
-    move_right() {
+    right() {
+        //save old coords for collision
+        this.old_x = this.x
+
         this.x += this.width
+
+        if (this.collision(window.walls)) {
+            this.x = this.old_x
+        }
     };
+
+    //checks
+    is_intersection() {
+        //check if player is at the intersection
+        if (this.collision(window.intersections)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     //clear fow (need to start with something.clear_fow(fow))
     clear_fow(fow) {
@@ -60,11 +102,53 @@ export class Obj{
         return fow
     };
 
-    //aabb collision (need to start with something.collision(obj))
+    //aabb collision (need to start with something.collision(obj)) where obj is an array or set
     collision(obj) {
-        return this.x < obj.x + obj.width  &&
-                this.x + this.width > obj.x &&
-                this.y < obj.y + obj.height &&
-                this.y + this.height > obj.y;
+        for (let item of obj) {
+            if (this.x < item.x + item.width && this.x + this.width > item.x && this.y < item.y + item.height && this.y + this.height > item.y) {
+                return true
+            }
+        }
+    }
+
+    //finds an enemy within 2 tiles up, down, left, right from player and kills it, else does nothing
+    shoot(enemies) {
+        for (let enemy of enemies) {
+            const diff_x = Math.abs((this.x - enemy.x) / this.width);
+            const diff_y = Math.abs((this.y - enemy.y) / this.height);
+            const shoot_range = 3;  //one more than intended range since < is used
+
+            //check for same axis and within range
+            if (!((this.y === enemy.y && diff_x < shoot_range) || (this.x === enemy.x && diff_y < shoot_range))) {
+                continue;
+            }
+
+            window.shoot = {start_x : this.x + this.width / 2, start_y : this.y + this.height / 2, end_x : enemy.x + enemy.width / 2, end_y : enemy.y + enemy.height / 2};
+            
+            //remove the enemy
+            enemies.delete(enemy);
+        }
+    }
+
+    //random enemy movement
+    move(enemies) {
+        //loop through enemies
+        for (let enemy of enemies) {
+            //decides random direction, 0 - up 1 - down 2 - left 3 - right
+            const direction = Math.floor(Math.random() * 4);
+
+            if (direction === 0) {
+                enemy.up();
+            }
+            else if (direction === 1) {
+                enemy.down();
+            }
+            else if (direction === 2) {
+                enemy.left();
+            }
+            else {
+                enemy.right();
+            }  
+        }
     }
 };
