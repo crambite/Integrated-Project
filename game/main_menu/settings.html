@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings • Blackbox Protocol</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="screen">
+    <section class="panel">
+      <header class="header">
+        <h1 class="title">Settings</h1>
+        <p class="subtitle">Adjust UI and gameplay preferences</p>
+      </header>
+
+      <div class="grid">
+        <!-- Audio -->
+        <section class="card">
+          <h2 class="card-title">Audio</h2>
+
+          <div class="row">
+            <span class="row-label">Master Volume</span>
+            <div class="row-control">
+              <input id="masterVolume" type="range" min="0" max="100" value="70" class="range">
+              <span class="value" id="masterVolumeVal">70</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="row-label">Music</span>
+            <div class="row-control">
+              <input id="musicVolume" type="range" min="0" max="100" value="55" class="range">
+              <span class="value" id="musicVolumeVal">55</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="row-label">SFX</span>
+            <div class="row-control">
+              <input id="sfxVolume" type="range" min="0" max="100" value="65" class="range">
+              <span class="value" id="sfxVolumeVal">65</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Visual / UI -->
+        <section class="card">
+          <h2 class="card-title">Visual</h2>
+
+          <div class="row">
+            <span class="row-label">Text Speed</span>
+            <div class="row-control">
+              <input id="textSpeed" type="range" min="1" max="10" value="6" class="range">
+              <span class="value" id="textSpeedVal">6</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="row-label">UI Scale</span>
+            <div class="row-control">
+              <input id="uiScale" type="range" min="80" max="130" value="100" class="range">
+              <span class="value" id="uiScaleVal">100%</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="row-label">Reduce Motion</span>
+            <div class="row-control right">
+              <label class="toggle">
+                <input id="reduceMotion" type="checkbox">
+                <span class="track"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="row-label">Show FPS</span>
+            <div class="row-control right">
+              <label class="toggle">
+                <input id="showFps" type="checkbox">
+                <span class="track"></span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- Gameplay -->
+        <section class="card">
+          <h2 class="card-title">Gameplay</h2>
+
+          <div class="row">
+            <span class="row-label">Auto Advance</span>
+            <div class="row-control right">
+              <label class="toggle">
+                <input id="autoAdvance" type="checkbox">
+                <span class="track"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="row-label">Skip Unread</span>
+            <div class="row-control right">
+              <label class="toggle">
+                <input id="skipUnread" type="checkbox" checked>
+                <span class="track"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="row-label">Confirm Actions</span>
+            <div class="row-control right">
+              <label class="toggle">
+                <input id="confirmActions" type="checkbox" checked>
+                <span class="track"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="row-label">Difficulty</span>
+            <div class="row-control">
+              <select id="difficulty" class="select">
+                <option value="story">Story</option>
+                <option value="standard" selected>Standard</option>
+                <option value="hard">Hard</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <!-- Accessibility -->
+        <section class="card">
+          <h2 class="card-title">Accessibility</h2>
+
+          <div class="row">
+            <span class="row-label">High Contrast</span>
+            <div class="row-control right">
+              <label class="toggle">
+                <input id="highContrast" type="checkbox">
+                <span class="track"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="row-label">Subtitles</span>
+            <div class="row-control right">
+              <label class="toggle">
+                <input id="subtitles" type="checkbox" checked>
+                <span class="track"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="row-label">Font Size</span>
+            <div class="row-control">
+              <select id="fontSize" class="select">
+                <option value="small">Small</option>
+                <option value="medium" selected>Medium</option>
+                <option value="large">Large</option>
+              </select>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="footer">
+        <div class="left">
+          <button class="ghost-btn" id="resetBtn" type="button">Reset</button>
+          <button class="ghost-btn" id="logoutBtn" type="button" onclick = "window.location.href='login.html'">Log Out</button>
+        </div>
+
+        <div class="right">
+          <button class="ghost-btn" id="backBtn" type="button">Back to menu</button>
+          <button class="primary-btn" id="saveBtn" type="button">Save</button>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    // Update slider numbers
+    const bindRange = (id, fmt = (v) => v) => {
+      const r = document.getElementById(id);
+      const out = document.getElementById(id + "Val");
+      const update = () => out.textContent = fmt(r.value);
+      r.addEventListener("input", update);
+      update();
+    };
+
+    bindRange("masterVolume");
+    bindRange("musicVolume");
+    bindRange("sfxVolume");
+    bindRange("textSpeed");
+    bindRange("uiScale", (v) => v + "%");
+
+    // Save/load (localStorage)
+    const fields = [
+      "masterVolume","musicVolume","sfxVolume","textSpeed","uiScale",
+      "reduceMotion","showFps","autoAdvance","skipUnread","confirmActions",
+      "difficulty","highContrast","subtitles","fontSize"
+    ];
+
+    const loadSettings = () => {
+      const saved = JSON.parse(localStorage.getItem("bbp_settings") || "{}");
+      for (const key of fields) {
+        const el = document.getElementById(key);
+        if (!(key in saved)) continue;
+
+        if (el.type === "checkbox") el.checked = !!saved[key];
+        else el.value = saved[key];
+      }
+
+      // refresh slider outputs
+      document.querySelectorAll('input[type="range"]').forEach(r =>
+        r.dispatchEvent(new Event("input"))
+      );
+    };
+
+    const saveSettings = () => {
+      const data = {};
+      for (const key of fields) {
+        const el = document.getElementById(key);
+        data[key] = (el.type === "checkbox") ? el.checked : el.value;
+      }
+      localStorage.setItem("bbp_settings", JSON.stringify(data));
+      alert("Settings saved.");
+    };
+
+    const resetSettings = () => {
+      localStorage.removeItem("bbp_settings");
+      location.reload();
+    };
+
+    document.getElementById("saveBtn").addEventListener("click", saveSettings);
+    document.getElementById("resetBtn").addEventListener("click", resetSettings);
+
+    document.getElementById("backBtn").addEventListener("click", () => {
+      window.location.href = "menu.html";
+    });
+
+    loadSettings();
+  </script>
+</body>
+</html>
