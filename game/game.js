@@ -22,7 +22,7 @@ map = [
     "wwwwwwwwwwwwwwwwwwwwwwww",
     "wwwwwwwwwwwwwwwwwwwwwwww",
     "wwwwwwwwwwwwwwwwwwwwwwww",
-    "wwwwwwwwwe iwwwwwwwwwwww",
+    "wwwwwwwwEe iwwwwwwwwwwww",
     "wwwwwwwwwww wwwwwwwwwwww",
     "wwwwwwwwwwwpwwwwwwwwwwww",
     "wwwwwwwwwwwwwwwwwwwwwwww",
@@ -68,6 +68,9 @@ let turns = 1;
 //player
 let player;
 
+//exit
+let exit;
+
 //shoot state
 let is_shooting = false;
 window.shoot = {start_x : 0, start_y : 0 , end_x : 0, end_y : 0};
@@ -105,6 +108,10 @@ wall_image.src = "../assets/map/stone_wall.jpg";
 const fog_image = new Image();
 fog_image.src = "../assets/map/fog.png";
 
+//exit
+const exit_image = new Image();
+exit_image.src = "../assets/map/exit.jpg"
+
 //coordinates of assets
 function get_coords(map) {
     for (let y = 0; y < map.length; y++) {
@@ -129,7 +136,10 @@ function get_coords(map) {
                 intersections.add(new Obj(x * tile_size, y * tile_size, tile_size, tile_size));
             }
             else if (map[y][x] === "e") {
-                enemies.add(new Obj(x * tile_size, y * tile_size, tile_size, tile_size))
+                enemies.add(new Obj(x * tile_size, y * tile_size, tile_size, tile_size));
+            }
+            else if (map[y][x] === "E") {
+                exit = new Obj(x * tile_size, y * tile_size, tile_size, tile_size);
             }
         }
     }
@@ -160,6 +170,17 @@ function draw() {
         context.drawImage(wall_image, wall.x, wall.y, wall.width, wall.height);
     }
 
+    //draw player
+    context.drawImage(player_image, player.x, player.y, player.width, player.height);
+
+    //draw exit
+    context.drawImage(exit_image, exit.x, exit.y, exit.width, exit.height)
+
+    //draw enemy
+    for (let enemy of enemies) {
+        context.drawImage(enemy_image, enemy.x, enemy.y, enemy.width, enemy.height);
+    }
+
     //draw fow (dosent use sets)
     for (let y = 0; y < fow.length; y++) {
         for (let x = 0; x < fow[y].length; x++) {
@@ -170,14 +191,6 @@ function draw() {
 
             context.drawImage(fog_image, x * tile_size, y *tile_size, tile_size, tile_size);
         }
-    }
-
-    //draw player
-    context.drawImage(player_image, player.x, player.y, player.width, player.height);
-
-    //draw enemy
-    for (let enemy of enemies) {
-        context.drawImage(enemy_image, enemy.x, enemy.y, enemy.width, enemy.height);
     }
 
     //draw bullet ray if player shoots
@@ -238,6 +251,8 @@ function player_turn() {
     //clear fow
     fow = player.clear_fow(fow);
 
+    draw(); 
+
     //check if player collided with enemy (done here as ghost dosent need to care about death to enemy)
     if (player.collision(enemies)) {
         alert("You died");
@@ -247,7 +262,13 @@ function player_turn() {
         return;
     }
 
-    draw();
+    if (player.collision(exit)) {
+        alert("You Win");
+
+        reset();
+
+        return;
+    }
 
     queue.shift();
 

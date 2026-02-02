@@ -104,10 +104,15 @@ export class Obj{
 
     //aabb collision (need to start with something.collision(obj)) where obj is an array or set
     collision(obj) {
-        for (let item of obj) {
-            if (this.x < item.x + item.width && this.x + this.width > item.x && this.y < item.y + item.height && this.y + this.height > item.y) {
-                return true
+        try {
+            for (let item of obj) {
+                if (this.x < item.x + item.width && this.x + this.width > item.x && this.y < item.y + item.height && this.y + this.height > item.y) {
+                    return true
+                }
             }
+        }
+        catch  {
+            return this.x < obj.x + obj.width && this.x + this.width > obj.x && this.y < obj.y + obj.height && this.y + this.height > obj.y
         }
     }
 
