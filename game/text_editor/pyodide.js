@@ -11,10 +11,12 @@ outputEl.value = "Initializing...\n"; //can be deleted in final draft
 
 //player controls
 function set_controls(pyodide) {
-    pyodide.globals.set("forward", window.player_controls.forward);
-    pyodide.globals.set("backward", window.player_controls.backward);
+    pyodide.globals.set("up", window.player_controls.up);
+    pyodide.globals.set("down", window.player_controls.down);
     pyodide.globals.set("left", window.player_controls.left);
     pyodide.globals.set("right", window.player_controls.right);
+    pyodide.globals.set("shoot", window.player_controls.shoot);
+    pyodide.globals.set("is_intersection", window.ghost.is_intersection.bind(window.ghost));
 };
 
 async function main() {
