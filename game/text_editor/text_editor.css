@@ -1,12 +1,15 @@
 .text_editor{
     width: 40rem;
     min-width: 10rem; /* limits resize to this width so all buttons can still be seen */
-    height: 30rem;
+    height: 100vh;
     min-height: 10rem; /* limits resize to this width so all buttons can still be seen */
     padding: 3px; /* adds a border within the text editor */
-    z-index: 999; /* text editor should appear over everything */
+    z-index: 1; /* text editor should appear over everything other than menu*/
+    top: 0; /* stick to the top */
+    right: 0; /* stick to the right */
+    
 
-    position: fixed;
+    position: absolute;
     display: flex;
     flex-direction: column;
     resize: both;
@@ -35,20 +38,12 @@
     flex: 1; /* let the text area fill up any available space */
 }
 
-/* replace with function cheatsheet for final draft */
-.output_console{
-    top: 30rem;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-#output{
-    width: 40rem;
-    height: 20rem;
-    resize: none
-}
-
 /* mobile:
 below 1369px (width), cut text editor size width to 15rem and height to 10rem for code console, text editor and output
 */
+@media (max-width: 1368px){
+    .text_editor{
+        width: 20rem;
+        height: 100vh;
+    }
+}

@@ -4,6 +4,10 @@ import { player_controller } from "./controls/player_controls.js"
 //run button
 const run = document.querySelector(".run")
 
+//message display
+const message = document.getElementById("message")
+const message_content = document.getElementById("message_content")
+
 //board 
 let board, context
 const tile_size = 48;
@@ -11,8 +15,8 @@ const columns = 24;
 const rows = 16
 const board_height = rows * tile_size;
 const board_width = columns * tile_size;
-
-const boundary = document.getElementById("game_console");
+window.board_height = board_height
+window.board_width = board_width
 
 //map
 let map;
@@ -145,21 +149,6 @@ function get_coords(map) {
     }
 };
 
-//scalable canvas
-function resize() {
-    //get height and width of parent container
-    const dimension = boundary.getBoundingClientRect();
-
-    //get and choose smallest scale
-    const scale_x = dimension.width / board_width;
-    const scale_y = dimension.height / board_height;
-    const scale = Math.min(scale_x, scale_y);
-
-    //update board dimensions
-    board.style.width = (board_width * scale) + "px";
-    board.style.height = (board_height * scale) + "px";
-};
-
 //draw the assets in the game console
 function draw() {
     //clear the board of previous assets
@@ -216,7 +205,7 @@ function player_turn() {
         turns += 1;
 
         //start enemy turn
-        alert("enemy turn");
+        display("enemy turn");
 
         clearInterval(interval);
         interval = null;
@@ -255,7 +244,7 @@ function player_turn() {
 
     //check if player collided with enemy (done here as ghost dosent need to care about death to enemy)
     if (player.collision(enemies)) {
-        alert("You died");
+        display("You died");
 
         reset();
 
@@ -263,7 +252,7 @@ function player_turn() {
     }
 
     if (player.collision(exit)) {
-        alert("You Win");
+        display("You Win");
 
         reset();
 
@@ -283,7 +272,7 @@ function enemy_turn(steps) {
 
     //check for collision for enemies
     if (player.collision(enemies)) {
-        alert("You died");
+        display("You died");
 
         reset();
 
@@ -295,7 +284,7 @@ function enemy_turn(steps) {
 
     //stops moving the enemy when it has moved its specified number of syeps and brings it back to the player's turn
     if (count === steps) {
-        alert(`turn: ${turns}`);
+        display(`turn: ${turns}`);
 
         //reset count for next use
         count = 0;
@@ -318,7 +307,7 @@ function reset() {
     queue.length = 0;
     turns = 1;
     is_shooting = false;
-    window.shoot = { start_x: 0, start_y: 0, end_x: 0, end_y: 0 };
+    window.shoot = {start_x: 0, start_y: 0, end_x: 0, end_y: 0};
     count = 0
 
     walls.clear();
@@ -361,14 +350,25 @@ function reset() {
     draw();
 }
 
+//displays a message from the game
+function display(text) {
+    //make the banner visible
+    message.style.opacity = 0.95;
+
+    //write the message
+    message_content.textContent = text;
+
+    setTimeout(() => {
+        message.style.opacity = 0;
+    }, 1000)
+}
+
 //initialise board
-window.onload = () => {
+window.addEventListener("load", () => {
     board = document.getElementById("board");
     board.height = board_height;
     board.width = board_width;
     context = board.getContext("2d");
-
-    resize(); //ensure that text editor is the right size
 
     //initialise game
     get_coords(map); 
@@ -385,10 +385,7 @@ window.onload = () => {
 
     //gives a "green light" when player controls are fully loaded
     window.dispatchEvent(new Event("player-controls-ready"));
-};
-
-//resize board
-window.onresize = resize;
+});
 
 //run only when "run" is clicked
 run.addEventListener("click", () => {

@@ -4,25 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>game</title>
+    <title>Blackbox Protocol</title>
 
     <link rel="stylesheet" href="text_editor/text_editor.css">
+    <link rel="stylesheet" href="game_console/game_console.css">
     <link rel="stylesheet" href="game.css">
 
     <script src="https://cdn.jsdelivr.net/pyodide/v0.29.1/full/pyodide.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.43.3/ace.js"></script>
     <script src="text_editor/pyodide.js" defer></script>
     <script src="text_editor/text_editor.js" defer></script>
+    <script src="game_console/game_console.js" defer></script>
     <script type="module" src="game.js" defer></script>
 </head>
 <body>
     <!-- Game Console -->
     <div id="game_console">
+        <!-- Nav Bar -->
+        <div id="nav">
+            <button id="return" onclick="location.href='main_menu/menu.html'">←</button>
+
+            <div id="map"><p>Level: Test</p></div>
+
+            <div id = "misc">
+                <button id="help">?</button>
+                <button id="settings">#</button>
+            </div>
+        </div>
+
         <!-- Game Board -->
-        <canvas id="board"></canvas>
+        <div id="game_content">
+            <canvas id="board"></canvas>
+
+            <!-- Game Messages -->
+            <div id="message">
+                <h1 id="message_content">This is a test</h1>
+            </div>
+        </div>
     </div>
 
-    <!--Code Console-->
+    <!-- Help (hidden until button pressed) -->
+    <div id="help_menu">
+        <button id="help_close" class="close">X</button>
+    </div>
+
+    <!-- Settings (hidden until button pressed) -->
+    <div id="settings_menu">
+        <button id="settings_close" class="close">X</button>
+    </div>
+    
+    <!-- Code Console -->
     <div id="code_console">
         <!-- Text Editor -->
         <div class="text_editor">
@@ -38,13 +69,5 @@
 
             <div class="code"></div>
         </div>
-
-        <!-- Testing for Text Editor (To be replace for function cheatsheet) -->
-        <div class="output_console">
-            <p>Output:</p>
-            <textarea id="output" disabled></textarea>
-        </div>
-    </div>
-
 </body>
 </html>

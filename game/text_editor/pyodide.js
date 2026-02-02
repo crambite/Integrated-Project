@@ -1,13 +1,5 @@
 // Pyodide logic
-const outputEl = document.getElementById("output");
 const codeEl = document.getElementById("code");
-
-function addToOutput(output) {
-    outputEl.value += String(output) + "\n";
-}
-
-//Initialises Pyodide
-outputEl.value = "Initializing...\n"; //can be deleted in final draft
 
 //player controls
 function set_controls(pyodide) {
@@ -33,12 +25,10 @@ async function main() {
             window.addEventListener("player-controls-ready", () => set_controls(pyodide))
         }
 
-        outputEl.value += "Ready!\n---------------\n"; //can be deleted in final draft
         return pyodide;
     } 
 
     catch (e) {
-        outputEl.value += "Failed to load Pyodide:\n" + e + "\n"; //can be deleted in final draft
         throw e;
     }
 }
@@ -49,21 +39,12 @@ let pyodideReadyPromise = main();
 async function evaluatePython() {
     const pyodide = await pyodideReadyPromise;
 
-    try {
-        pyodide.runPython(`
-            import sys
-            from io import StringIO
-            sys.stdout = StringIO()
-        `);
+    pyodide.runPython(`
+        import sys
+        from io import StringIO
+        sys.stdout = StringIO()
+    `);
 
-        const code = aceEditor.getValue(); // get code from Ace editor
-        const result = pyodide.runPython(code);
-        const printed = pyodide.runPython("sys.stdout.getvalue()"); //allow us to output print() properly
-        addToOutput(printed || result);
-    } 
-
-    catch (err) {
-        addToOutput(err);
-    }
+    const code = aceEditor.getValue(); // get code from Ace editor
+    pyodide.runPython(code);
 }
-

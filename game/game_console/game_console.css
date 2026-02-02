@@ -1,0 +1,89 @@
+/* nav bar */
+#nav {
+    height: 3rem;
+
+    display: flex;
+    align-items: center;
+    background-color: rgb(22, 22, 22);
+}
+#return{
+    margin: 10px;
+
+    margin-right: auto; /* stick to left */
+}
+
+#map{
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+#misc{
+    margin: 10px; 
+    gap: 0.5rem;
+
+    margin-left: auto; /* stick to right */
+    display: flex; 
+}
+#nav button{
+    width: 2rem;
+    height: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* help menu */
+#help_menu{
+    width: 100vw;
+    height: 100vh; 
+    z-index: 999; /* should appear over everything */
+    top: -1000px;
+
+    position: fixed;
+    background-color: rgb(22, 22, 22);
+}
+
+/* settings */
+#settings_menu{
+    width: 30vw;
+    min-width: 20rem; /* prevent settings from apeparing too small */
+    height: 60vh;   
+    z-index: 999; /* should appear over everything */ 
+    top: -1000px;
+
+    background-color: rgb(22, 22, 22);
+    position: fixed;
+}
+/* close button */
+.close{
+    right: 0;
+    position: absolute;
+}
+
+/* game content */
+#game_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#board{
+    width: 100%;
+    height: 100%;
+    min-width: 0; /* allows to be scaled down infinitely */
+
+    background-color: rgb(0, 0, 0);
+}
+#message {
+    height: 5rem;
+    width: 100%;
+    opacity: 0;
+
+    text-align: center;
+    position: absolute;
+    color: rgb(255, 255, 255);
+    background-color: rgb(22, 22, 22);
+}

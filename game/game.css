@@ -4,20 +4,31 @@ body{
 
     display: flex;
     flex-direction: row;
+    overflow: hidden; /* hide the scroll bar */
+    background-color: rgb(22, 22, 22);
 }
-#game_console {
+
+/* game console */
+#game_console{
     height: 100vh;
     flex: 1; /* makes the console fill up any available space */
     min-width: 0; /* allows to be scaled down infinitely */
 
-    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
-#board{
-    min-width: 0; /* allows to be scaled down infinitely */
-    background-color: black;
-}
+/* text editor */
 #code_console{
     margin: 0;
     padding: 0;
     width: 40rem;
+}
+
+@media (max-width: 1369px){
+
+    #code_console {
+        margin: 0;
+        padding: 0;
+        width: 20rem;
+    }
 }
