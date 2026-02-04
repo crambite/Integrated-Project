@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Map Selection</title>
+
+	<link rel="stylesheet" href="map.css">
+
+	<script src="map.js" defer></script>
+</head>
+
+<body>
+	<!-- Return Button -->
+	<button id="return" onclick="location.href = '../main_menu/menu.html'">←</button>
+
+	<!-- Next Act Button -->
+	<div id="next_act">
+		<div id="next_act_box"><img id="next_act_img" src="../../assets/map/globe.png" alt=""></div>
+		<p id="next_act_name">To World</p>
+	</div>
+
+	<!-- Act 1 -->
+	<div id="act1">
+
+		<img id="lab_map" src="../../assets/map/lab_map.png" alt="">
+
+		<!-- Maps -->
+		<!-- The Room -->
+		<div class="map_grp" style="top: 90%; left: 46%;">
+			<div class="map" id="The_Room"></div>
+			<p class="map_name">The Room</p>
+		</div>
+
+		<!-- Enemies -->
+		<div class="map_grp" style="top: 40%; left: 38%;">
+			<div class="map" id="Enemies"></div>
+			<p class="map_name">Enemies</p>
+		</div>
+
+		<!-- The Exit -->
+		<div class="map_grp" style="top: 30%; left: 61%;">
+			<div class="map" id="The_Exit"></div>
+			<p class="map_name">The Exit</p>
+		</div>
+
+		<!-- Root Of All Problems -->
+		<div class="map_grp" style="top: 56%; left: 26%;">
+			<div class="map" id="Familiar_Scene"></div>
+			<p class="map_name">Familiar Scene</p>
+		</div>
+	</div>
+	
+	<!-- Act 2-->
+	<div id="act2">
+
+		<img id="world_map" src="../../assets/map/world_map.png" alt="">
+
+		<!-- Maps -->
+		<!-- North America -->
+		<div class="map_grp" style="top: 30%; left: 20%;">
+			<div class="map" id="North_America"></div>
+			<p class="map_name">North America</p>
+		</div>
+
+		<!-- Australia -->
+		<div class="map_grp" style="top: 83%; left: 81%;">
+			<div class="map" id="Australia"></div>
+			<p class="map_name">Australia</p>
+		</div>
+
+		<!-- Africa -->
+		<div class="map_grp" style="top: 55%; left: 48%;">
+			<div class="map" id="Africa"></div>
+			<p class="map_name">Africa</p>
+		</div>
+
+		<!-- Asia -->
+		<div class="map_grp" style="top: 32%; left: 64%;">
+			<div class="map" id="Asia"></div>
+			<p class="map_name">Asia</p>
+		</div>
+		
+		<!-- South America -->
+		<div class="map_grp" style="top: 70%; left: 25%;">
+			<div class="map" id="South_America"></div>
+			<p class="map_name">South America</p>
+		</div>
+	</div>
+
+	<!-- Confirm Map -->
+	<div id="confirm_map">
+		<!-- Close Menu -->
+		<button id="close">X</button>
+
+		<!--Map name-->
+		<h1 id="map_name_cfm">Test</h1>
+
+		<!-- Drone 1 -->
+		<div id="Kill" class="drone">
+			<img src="../../assets/characters/drone.png" alt="">
+			<span><p class="description">Automatically kills 1 enemy on the field. 1 time use.</p></span>
+		</div>
+		<!-- Drone 2 -->
+		<div id="Exit" class="drone">
+			<img src="../../assets/characters/drone.png" alt="">
+			<span><p class="description">Reveals the location of the exit. 1 time use.</p></span>
+		</div>
+		<!-- Drone 3 -->
+		<div id="Reveal" class="drone">
+			<img src="../../assets/characters/drone.png" alt="">
+			<span><p class="description">Reveals the location of all enemies. 1 time use.</p></span>
+		</div>
+
+		<!-- Enter -->
+		<div id="enter"><p>Enter</p></div>
+	</div>
+</body>
+</html>

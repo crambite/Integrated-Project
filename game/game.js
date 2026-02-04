@@ -19,25 +19,173 @@ window.board_height = board_height
 window.board_width = board_width
 
 //map
-let map;
-map = [
-    "wwwwwwwwwwwwwwwwwwwwwwww",
-    "wwwwwwwwwwwwwwwwwwwwwwww",
-    "wwwwwwwwwwwwwwwwwwwwwwww",
-    "wwwwwwwwwwwwwwwwwwwwwwww",
-    "wwwwwwwwwwwwwwwwwwwwwwww",
-    "wwwwwwwwEe iwwwwwwwwwwww",
-    "wwwwwwwwwww wwwwwwwwwwww",
-    "wwwwwwwwwwwpwwwwwwwwwwww",
-    "wwwwwwwwwwwwwwwwwwwwwwww",
-    "wwwwwwwwwwwwwwwwwwwwwwww",
-    "wwwwwwwwwwwwwwwwwwwwwwww",
-    "wwwwwwwwwwwwwwwwwwwwwwww",
-    "wwwwwwwwwwwwwwwwwwwwwwww",
-    "wwwwwwwwwwwwwwwwwwwwwwww",
-    "wwwwwwwwwwwwwwwwwwwwwwww",
-    "wwwwwwwwwwwwwwwwwwwwwwww"
-];
+const map_list = {
+    "The_Room" : [
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwEe iwwwwwwwwwwww",
+                    "wwwwwwwwwww wwwwwwwwwwww",
+                    "wwwwwwwwwwwpwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww"
+                    ],
+    "Enemies" : [
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwEe iwwwwwwwwwwww",
+                    "wwwwwwwwwww wwwwwwwwwwww",
+                    "wwwwwwwwwwwpwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww"
+                    ],
+    "The_Exit" : [
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwEe iwwwwwwwwwwww",
+                    "wwwwwwwwwww wwwwwwwwwwww",
+                    "wwwwwwwwwwwpwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww"
+                    ],
+    "North_America" : [
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwEe iwwwwwwwwwwww",
+                        "wwwwwwwwwww wwwwwwwwwwww",
+                        "wwwwwwwwwwwpwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww"
+                        ],
+    "Australia" : [
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwEe iwwwwwwwwwwww",
+                    "wwwwwwwwwww wwwwwwwwwwww",
+                    "wwwwwwwwwwwpwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww",
+                    "wwwwwwwwwwwwwwwwwwwwwwww"
+                    ],
+    "Africa" : [
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwEe iwwwwwwwwwwww",
+                "wwwwwwwwwww wwwwwwwwwwww",
+                "wwwwwwwwwwwpwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww"
+                ],
+    "Asia" : [
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwEe iwwwwwwwwwwww",
+                "wwwwwwwwwwwewwwwwwwwwwww",
+                "wwwwwwwwwwwpwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww",
+                "wwwwwwwwwwwwwwwwwwwwwwww"
+                ],
+    "South_America" : [
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwewwwwwwwwwwww",
+                        "wwwwwwwwwww wwwwwwwwwwww",
+                        "wwwwwwwwEe iwwwwwwwwwwww",
+                        "wwwwwwwwwww wwwwwwwwwwww",
+                        "wwwwwwwwwwwpwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww"
+                        ],
+    "Familiar_Scene" : [
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwEe iwwwwwwwwwwww",
+                        "wwwwwwwwwww wwwwwwwwwwww",
+                        "wwwwwwwwwwwpwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww",
+                        "wwwwwwwwwwwwwwwwwwwwwwww"
+                        ],
+}
+
+const map_id = sessionStorage.getItem("map");
+const map = map_list[map_id];
 
 //intersections
 let intersections = new Set();
@@ -91,7 +239,7 @@ let walls = new Set();
 //game loop
 let interval;
 
-//counter used in functions (enemy_turn)
+//counter used in functions where i need index and item
 let count = 0
 
 //images
@@ -115,6 +263,42 @@ fog_image.src = "../assets/map/fog.png";
 //exit
 const exit_image = new Image();
 exit_image.src = "../assets/map/exit.jpg"
+
+function use(drone) {
+    if (drone === "Kill") {
+        //random enemy
+        const random = Math.floor(Math.random() * enemies.size);
+
+        //"kills" the enemy
+        for (let enemy of enemies) {
+            if (count === random) {
+                enemies.delete(enemy);
+                break;
+            }
+
+            count++;
+        }
+    }
+    else if (drone === "Exit") {
+        //gets the x, y of the exit and clears the fog on it
+        const clear_x = exit.x / tile_size;
+        const clear_y = exit.y / tile_size;
+
+        fow[clear_y][clear_x] = "";
+    }
+    else {
+        //gets the x, y of all enemies and clears the fog on it
+        for (let enemy of enemies) {
+            const clear_x = enemy.x / tile_size;
+            const clear_y = enemy.y / tile_size;
+
+            fow[clear_y][clear_x] = "";
+        }
+    }
+
+    //reset count for further use
+    count = 0
+}
 
 //coordinates of assets
 function get_coords(map) {
@@ -147,6 +331,9 @@ function get_coords(map) {
             }
         }
     }
+
+    //use the drone (automatic)
+    use(sessionStorage.getItem("drone"));
 };
 
 //draw the assets in the game console
@@ -254,7 +441,7 @@ function player_turn() {
     if (player.collision(exit)) {
         display("You Win");
 
-        reset();
+        window.location.href = "map_selection/map.html"
 
         return;
     }
@@ -280,9 +467,10 @@ function enemy_turn(steps) {
     }
 
     draw();
+
     count++
 
-    //stops moving the enemy when it has moved its specified number of syeps and brings it back to the player's turn
+    //stops moving the enemy when it has moved its specified number of steps and brings it back to the player's turn
     if (count === steps) {
         display(`turn: ${turns}`);
 
@@ -295,7 +483,6 @@ function enemy_turn(steps) {
     }
 
 }
-
 
 //reset game back to start
 function reset() {

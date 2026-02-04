@@ -38,9 +38,6 @@
     flex: 1; /* let the text area fill up any available space */
 }
 
-/* mobile:
-below 1369px (width), cut text editor size width to 15rem and height to 10rem for code console, text editor and output
-*/
 @media (max-width: 1368px){
     .text_editor{
         width: 20rem;

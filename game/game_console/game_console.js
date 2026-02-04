@@ -5,6 +5,7 @@ const settings_btn = document.getElementById("settings");
 const settings_menu = document.getElementById("settings_menu");
 const help_close = document.getElementById("help_close");
 const settings_close = document.getElementById("settings_close");
+const map = document.getElementById("map");
 
 let open = false;
 
@@ -24,7 +25,12 @@ function resize() {
 };
 
 //ensure that text editor is the right size
-window.addEventListener("load", resize);
+window.addEventListener("load", () => {
+    resize();
+
+    //display map level
+    map.textContent = sessionStorage.getItem("map").replace("_", " ")
+});
 
 //resize board
 window.addEventListener("resize", resize);

@@ -1,0 +1,196 @@
+body{
+	margin: 0;
+	height: 100vh;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(22, 22, 22);
+}
+#return{
+	top: 0;
+	left: 0;
+	margin: 10px;
+	width: 2.5rem;
+	height: 2rem;
+	z-index: 999;
+
+	position: fixed;
+}
+/* next act button */
+#next_act{
+	top: 90%;
+	left: 68%;
+	z-index: 999;
+
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transform: translate(-50%, -50%); /* makes the button stay in place even when scaled down */
+}
+#next_act_box{
+	width: 10vw;
+	min-width: 3rem;
+	height: 3vw;
+	min-height: 2rem;
+	border-radius: 50px;
+
+	border: 3px solid rgb(255, 30, 30);
+	background: rgb(8, 9, 110);
+	box-shadow:  inset 0 0 1rem rgb(12, 71, 197);
+}
+#next_act_box:hover{
+	transform: scale(1.2);
+	box-shadow: 0 0 1rem rgba(255, 43, 43, 0.7);
+}
+#next_act_img{
+	height: 100%;
+	width: 100%;
+
+	object-fit: contain;
+}
+#next_act_name{
+	font-size: clamp(1rem, 5vh, 2rem);
+	opacity: 0;
+
+	color: rgb(255, 255, 255);
+	background-color: rgb(0, 0, 0);
+}
+/* map selector */
+#act1{
+	width: min(100vw, calc(100vh * 16 / 9));
+	height: min(100vh, calc(100vw * 9 / 16));
+
+	position: absolute;
+	overflow: hidden;
+}
+/* lab_map */
+#lab_map{
+	width: 100%;
+	height: 100%;
+
+	position: absolute;
+	display: block;
+	object-fit: contain;   
+	object-position: center;
+}
+#act2{
+	top: -1000px;
+	width: min(100vw, calc(100vh * 16 / 9));
+	height: min(100vh, calc(100vw * 9 / 16));
+
+	position: absolute;
+	overflow: hidden;
+}
+/* world map img */
+#world_map{
+	width: 100%;
+	height: 100%;
+
+	position: absolute;
+	display: block;
+	object-fit: contain;   
+	object-position: center;
+}
+.map_grp{
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transform: translate(-50%, -50%); /* makes the maps stay in place even when scaled down */
+}
+.map{
+	width: 3vw;
+	min-width: 2rem;
+	height: 3vw;
+	min-height: 2rem;
+	border-radius: 50%;
+
+	border: 3px solid rgb(255, 30, 30);
+	background: rgb(8, 9, 110);
+	box-shadow:  inset 0 0 1rem rgb(12, 71, 197);
+	box-sizing: border-box;
+}
+.map:hover{
+	transform: scale(1.2);
+	box-shadow: 0 0 1rem rgba(255, 43, 43, 0.7);
+}
+.map_name{
+	font-size: clamp(1rem, 5vh, 2rem);
+	opacity: 0;
+
+	color: rgb(255, 255, 255);
+	background-color: rgb(0, 0, 0);
+}
+/* confirm map screen */
+#confirm_map{
+	top: -1000px;
+	left: 50%;
+	width: 40%;
+	min-width: 10rem;
+	height: 90%;
+	border-radius: 12px;
+	z-index: 999;
+
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgb(22, 22, 22);
+	transform: translate(-50%, -50%); /* allows me to centre it without any calculations */
+}
+#close{
+	top: 0;
+	right: 0;
+
+	position: absolute;
+}
+#map_name_cfm{
+	font-size: 5vh;
+
+	color: white;
+}
+.drone{
+	margin: 10px;
+	width: 80%;
+	border-radius: 20px;
+
+	display: flex;
+	flex-direction: row;
+	border: 3px solid rgb(8, 9, 110);
+}
+.drone:hover{
+	transform: scale(1.2);
+	box-shadow: 0 0 1rem rgba(255, 43, 43, 0.7);
+}
+.drone img{
+	width: 7vw;
+	min-width: 4rem;
+	height: 7vw;
+	min-height: 4rem;
+}
+.description{
+	color: rgb(255, 255, 255);
+}
+#enter{
+	margin-top: 20px;
+	width: 50%;
+	height: 10%;
+	border-radius: 20px;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgb(8, 9, 110);
+}
+#enter:hover{
+	transform: scale(1.2);
+	box-shadow: 0 0 1rem rgba(255, 43, 43, 0.7);
+}
+#enter p{
+	margin: 0;
+	font-size: clamp(1rem, 5vh, 2rem);
+
+	color: rgb(255, 255, 255);
+}
