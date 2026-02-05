@@ -165,6 +165,7 @@ body{
 
 	display: flex;
 	flex-direction: row;
+	background-color: rgb(6, 7, 32);
 	border: 3px solid rgb(8, 9, 110);
 }
 .drone:hover{

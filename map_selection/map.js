@@ -23,9 +23,9 @@ const next_act_image = document.getElementById("next_act_img");
 
 //drones
 const drones = document.querySelectorAll(".drone");
-let drone_selected = false
 
 let map_id, drone_name;
+sessionStorage.setItem("drone", drone_name)
 
 let act = sessionStorage.getItem("act");
 
@@ -59,19 +59,16 @@ function resize() {
 for (let drone of drones) {
     //check for click
     drone.addEventListener("click", (e) => {
-        //check if another drone has been clicked
-        if (drone_selected === true) {
-            drone_selected = false;
-            drone.style.border = "3px solid rgb(8, 9, 110)";
+        drone_name = e.currentTarget.id;
 
-            return;
+        //reset all other drones
+        for (let d of drones) {
+            d.style.border = "3px solid rgb(8, 9, 110)";
         }
 
-        drone_selected = true;
-
+        //highlight current selected drone
         drone.style.border = "3px solid rgb(255, 43, 43)";
 
-        drone_name = e.currentTarget.id;
         sessionStorage.setItem("drone", drone_name);
     })
 }
@@ -93,9 +90,18 @@ for (let i = 0; i < maps.length; i++) {
 
     //open map confirm screen
     map.addEventListener("click", (e) => {
-        confirm_screen.style.top = 50 + "%";
-
         map_id = e.currentTarget.id;
+
+        //first 2 maps dosent have drones due to story
+        if (map_id === "The_Room" || map_id === "Enemies") {
+            sessionStorage.setItem("map", map_id);
+            
+            window.location.href = "../game/game.html";
+
+            return;
+        }
+
+        confirm_screen.style.top = 50 + "%";
 
         //display name of map
         map_name_cfm.textContent = map_id.replace("_", " ");
@@ -107,6 +113,7 @@ for (let i = 0; i < maps.length; i++) {
     }
 }
 
+//close confirm screen
 close_btn.addEventListener("click", () => {
     confirm_screen.style.top = -1000 + "px";
 })
@@ -114,7 +121,7 @@ close_btn.addEventListener("click", () => {
 //store all data in session storage and sends user to respective map
 enter.addEventListener("click", () => {
     //check for all required data
-    if (!map_id || !drone_selected) {
+    if (!map_id || !drone_name) {
         alert("You must select a drone")
 
         return;
