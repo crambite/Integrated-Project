@@ -578,9 +578,11 @@ window.addEventListener("load", () => {
 run.addEventListener("click", () => {
     //prevents multiple clicks
     if (interval) {
-        console.log("spam run")
         return;
     }
+
+    //sends code to pyodide
+    evaluatePython()
 
     interval = setInterval(player_turn, 500);
 });
