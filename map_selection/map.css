@@ -116,6 +116,13 @@ body{
 	transform: scale(1.2);
 	box-shadow: 0 0 1rem rgba(255, 43, 43, 0.7);
 }
+/* if map is completed */
+.map.completed{
+	border: 3px solid rgb(30, 255, 30);
+}
+.map.completed:hover{
+	box-shadow: 0 0 1rem rgba(43, 255, 43, 0.7);;
+}
 .map_name{
 	font-size: clamp(1rem, 5vh, 2rem);
 	opacity: 0;

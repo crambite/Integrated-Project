@@ -1,3 +1,6 @@
+//player data
+let data = JSON.parse(sessionStorage.getItem("data"));
+
 //act
 const act_1 = document.getElementById("act1");
 const act_2 = document.getElementById("act2");
@@ -32,6 +35,24 @@ if (act === null) {
     act = "lab";  
 
     sessionStorage.setItem("act", act);
+}
+
+//resize
+function resize() {
+    if (act === "lab") {
+        //centre the map
+        const rect = act_1.getBoundingClientRect();
+        const top = Math.ceil((window.innerHeight - rect.height) / 2);
+
+        act_1.style.top = top + "px";
+    }
+    else if (act === "world") {
+        //centre the map
+        const rect = act_2.getBoundingClientRect();
+        const top = Math.ceil((window.innerHeight - rect.height) / 2);
+
+        act_2.style.top = top + "px";
+    }
 }
 
 //drone selection
@@ -79,13 +100,18 @@ for (let i = 0; i < maps.length; i++) {
         //display name of map
         map_name_cfm.textContent = map_id.replace("_", " ");
     })
+
+    //if completed, becomes green
+    if (data[map.id] === true) {
+        map.classList.add("completed");
+    }
 }
 
-//store all data in session storage and sends user to respective map
 close_btn.addEventListener("click", () => {
     confirm_screen.style.top = -1000 + "px";
 })
 
+//store all data in session storage and sends user to respective map
 enter.addEventListener("click", () => {
     //check for all required data
     if (!map_id || !drone_selected) {
@@ -140,26 +166,11 @@ next_act.addEventListener("click", () => {
         act = "lab";
         sessionStorage.setItem("act", act);
     }
+
+    resize();
 });
 
-window.addEventListener("resize", () => {
-
-    if (act === "lab") {
-        //centre the map
-        const rect = act_1.getBoundingClientRect();
-        const top = Math.ceil((window.innerHeight - rect.height) / 2);
-
-        act_1.style.top = top + "px";
-    }
-    else if (act === "world") {
-        //centre the map
-        const rect = act_2.getBoundingClientRect();
-        const top = Math.ceil((window.innerHeight - rect.height) / 2);
-
-        act_2.style.top = top + "px";
-    }
-
-});
+window.addEventListener("resize", resize);
 
 window.addEventListener("load", () => {
     //get act the player was previously on (persists per session)
@@ -179,4 +190,6 @@ window.addEventListener("load", () => {
     next_act_pos.style.left = 80 + "%";
     next_act_image.src = "assets/lab.png";
     next_act_name.textContent = "To Lab";
+
+    resize();
 });

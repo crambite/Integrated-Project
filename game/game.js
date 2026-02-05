@@ -19,173 +19,8 @@ window.board_height = board_height
 window.board_width = board_width
 
 //map
-const map_list = {
-    "The_Room" : [
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwEe iwwwwwwwwwwww",
-                    "wwwwwwwwwww wwwwwwwwwwww",
-                    "wwwwwwwwwwwpwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww"
-                    ],
-    "Enemies" : [
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwEe iwwwwwwwwwwww",
-                    "wwwwwwwwwww wwwwwwwwwwww",
-                    "wwwwwwwwwwwpwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww"
-                    ],
-    "The_Exit" : [
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwEe iwwwwwwwwwwww",
-                    "wwwwwwwwwww wwwwwwwwwwww",
-                    "wwwwwwwwwwwpwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww"
-                    ],
-    "North_America" : [
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwEe iwwwwwwwwwwww",
-                        "wwwwwwwwwww wwwwwwwwwwww",
-                        "wwwwwwwwwwwpwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww"
-                        ],
-    "Australia" : [
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwEe iwwwwwwwwwwww",
-                    "wwwwwwwwwww wwwwwwwwwwww",
-                    "wwwwwwwwwwwpwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww",
-                    "wwwwwwwwwwwwwwwwwwwwwwww"
-                    ],
-    "Africa" : [
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwEe iwwwwwwwwwwww",
-                "wwwwwwwwwww wwwwwwwwwwww",
-                "wwwwwwwwwwwpwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww"
-                ],
-    "Asia" : [
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwEe iwwwwwwwwwwww",
-                "wwwwwwwwwwwewwwwwwwwwwww",
-                "wwwwwwwwwwwpwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww",
-                "wwwwwwwwwwwwwwwwwwwwwwww"
-                ],
-    "South_America" : [
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwewwwwwwwwwwww",
-                        "wwwwwwwwwww wwwwwwwwwwww",
-                        "wwwwwwwwEe iwwwwwwwwwwww",
-                        "wwwwwwwwwww wwwwwwwwwwww",
-                        "wwwwwwwwwwwpwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww"
-                        ],
-    "Familiar_Scene" : [
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwEe iwwwwwwwwwwww",
-                        "wwwwwwwwwww wwwwwwwwwwww",
-                        "wwwwwwwwwwwpwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww",
-                        "wwwwwwwwwwwwwwwwwwwwwwww"
-                        ],
-}
-
 const map_id = sessionStorage.getItem("map");
-const map = map_list[map_id];
+const map = window.map_list[map_id];
 
 //intersections
 let intersections = new Set();
@@ -236,6 +71,9 @@ let enemies = new Set();
 //walls
 let walls = new Set();
 
+//floor
+let floors = new Set();
+
 //game loop
 let interval;
 
@@ -249,12 +87,27 @@ const enemy_image = new Image();
 enemy_image.src = "assets/characters/enemy.png";
 
 //player
-const player_image = new Image();
-player_image.src = "assets/characters/robot.jpg";
+const player_image = {
+up: new Image(),
+down: new Image(), 
+left: new Image(), 
+right: new Image()
+};
 
+//store a loaded version of the image to prevent player image being drawn too slowly
+player_image.up.src = "assets/characters/robot_up.png";
+player_image.down.src = "assets/characters/robot_down.png"
+player_image.left.src = "assets/characters/robot_left.png"
+player_image.right.src = "assets/characters/robot_right.png"
+
+let current_player_image = player_image.up
 //wall
 const wall_image = new Image();
-wall_image.src = "assets/map/stone_wall.jpg";
+wall_image.src = "assets/map/wall.png";
+
+//floor
+const floor_image = new Image();
+floor_image.src = "assets/map/floor.png"
 
 //fog
 const fog_image = new Image();
@@ -262,7 +115,7 @@ fog_image.src = "assets/map/fog.png";
 
 //exit
 const exit_image = new Image();
-exit_image.src = "assets/map/exit.jpg"
+exit_image.src = "assets/map/exit.png"
 
 function use(drone) {
     if (drone === "Kill") {
@@ -308,24 +161,29 @@ function get_coords(map) {
             //initialise fow
             fow[y].push("f");
             
-            //skips if that part of the map is empty
-            if (map[y][x] === " ") {
-                continue
+            //floor
+            if (map[y][x] !== "w") {
+                floors.add(new Obj(x * tile_size, y * tile_size, tile_size, tile_size));
             }
 
+            //wall
             if (map[y][x] === "w") {
                 walls.add(new Obj(x * tile_size, y * tile_size, tile_size, tile_size));
             }
+            //player
             else if (map[y][x] === "p") {
                 player = new Obj(x * tile_size, y * tile_size, tile_size, tile_size);
                 ghost = new Obj(x * tile_size, y * tile_size, tile_size, tile_size);
             }
+            //intersection
             else if (map[y][x] === "i") {
                 intersections.add(new Obj(x * tile_size, y * tile_size, tile_size, tile_size));
             }
+            //enemy
             else if (map[y][x] === "e") {
                 enemies.add(new Obj(x * tile_size, y * tile_size, tile_size, tile_size));
             }
+            //exit
             else if (map[y][x] === "E") {
                 exit = new Obj(x * tile_size, y * tile_size, tile_size, tile_size);
             }
@@ -346,8 +204,13 @@ function draw() {
         context.drawImage(wall_image, wall.x, wall.y, wall.width, wall.height);
     }
 
+    //draw floor
+    for (let floor of floors) {
+        context.drawImage(floor_image, floor.x, floor.y, floor.width, floor.height);
+    }
+
     //draw player
-    context.drawImage(player_image, player.x, player.y, player.width, player.height);
+    context.drawImage(current_player_image, player.x, player.y, player.width, player.height);
 
     //draw exit
     context.drawImage(exit_image, exit.x, exit.y, exit.width, exit.height)
@@ -407,15 +270,27 @@ function player_turn() {
     //checks the instruction and executes it
     if (instruction === "up") {
         player.up();
+
+        //change sprite direction
+        current_player_image = player_image.up;
     }
     else if (instruction === "down") {
         player.down();
+
+        //change sprite direction
+        current_player_image = player_image.down;
     }
     else if (instruction === "left") {
         player.left();
+
+        //change sprite direction
+        current_player_image = player_image.left;
     }
     else if (instruction === "right") {
         player.right();
+
+        //change sprite direction
+        current_player_image = player_image.right;
     }
     else if (instruction === "shoot") {
         //allows us to draw the shot
@@ -439,9 +314,19 @@ function player_turn() {
     }
 
     if (player.collision(exit)) {
-        display("You Win");
+        display("You Won");
 
-        window.location.href = "../visual_novel/visual_novel.html"
+        //update player data to mark map as completed
+        let data = JSON.parse(sessionStorage.getItem("data"));
+
+        data[map_id] = true;
+
+        sessionStorage.setItem("data", JSON.stringify(data));
+
+        //wait 500ms before going to vn screen
+        setTimeout(() => {
+            window.location.href = "../visual_novel/visual_novel.html";
+        }, 500);
 
         return;
     }
