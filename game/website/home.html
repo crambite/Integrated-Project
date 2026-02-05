@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blackbox — Learn to code through the power of play</title>
+  <link rel="stylesheet" href="home.css"/>
+</head>
+
+<body>
+  <!-- navigation bar -->
+  <header class="site-header" id="top">
+    <nav class="nav">
+      <a class="brand" href="#top" aria-label="Blackbox Home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Blackbox</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact Us</a>
+      </div>
+
+      <a class="btn btn-primary nav-cta" href="../game/main_menu/login.html">Join Us</a>
+    </nav>
+  </header>
+
+  <!-- hero -->
+  <main id="home">
+    <section class="hero" aria-label="Hero section">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="assets/hero-poster.jpg"
+      >
+        <!-- Replace with your own video -->
+        <source src="assets/hero.mp4" type="video/mp4" />
+      </video>
+
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <h1>Learn to code through the power of play</h1>
+        <p>
+          Blackbox turns coding into a story-driven, interactive experience—built for classrooms, clubs, and curious minds.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="../game/main_menu/login.html">Join the Mission</a>
+          <a class="btn btn-ghost" href="#about">How it works</a>
+        </div>
+        <a class="hero-scroll" href="#reviews" aria-label="Scroll down">
+          <span class="chev"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- reviews -->
+    <section class="section" id="reviews" aria-label="User reviews">
+      <div class="container">
+        <div class="section-head">
+          <h2>Reviews</h2>
+          <p>Real feedback from learners and educators using Blackbox.</p>
+        </div>
+
+        <div class="carousel" data-carousel="reviews">
+          <button class="icon-btn" data-prev aria-label="Previous review">←</button>
+
+          <article class="review-card" aria-live="polite">
+            <p class="review-quote" id="reviewText">“One thing I am able to do now, that I could not do before, is actually believe I can code.”</p>
+            <div class="review-meta">
+              <div class="avatar" aria-hidden="true"></div>
+              <div>
+                <div class="review-name" id="reviewName">Middle School Student</div>
+                <div class="review-sub" id="reviewSub">Classroom Pilot Program</div>
+              </div>
+            </div>
+
+            <div class="dots" aria-label="Review positions">
+              <button class="dot is-active" data-dot="0" aria-label="Review 1"></button>
+              <button class="dot" data-dot="1" aria-label="Review 2"></button>
+              <button class="dot" data-dot="2" aria-label="Review 3"></button>
+              <button class="dot" data-dot="3" aria-label="Review 4"></button>
+            </div>
+          </article>
+
+          <button class="icon-btn" data-next aria-label="Next review">→</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- advancing our platform -->
+    <section class="section section-dark" id="about" aria-label="Platform updates">
+      <div class="container">
+        <div class="section-head">
+          <h2>Advancing Our Platform</h2>
+          <p>Milestones, updates, and improvements—tracked over time.</p>
+        </div>
+
+        <div class="update-panel" data-carousel="updates">
+          <div class="update-top">
+            <button class="chip-btn" data-prev aria-label="Previous update">
+              <span class="chip-icon">←</span>
+            </button>
+
+            <div class="update-date">
+              <div class="muted">From</div>
+              <div class="date-strong" id="updateDate">Apr 23, 2025</div>
+            </div>
+
+            <button class="chip-btn" data-next aria-label="Next update">
+              <span class="chip-icon">→</span>
+            </button>
+          </div>
+
+          <div class="update-body">
+            <h3 id="updateTitle">Friend Referral Program</h3>
+            <p id="updateText">
+              We launched a referral flow that lets creators reward players for inviting friends to their experience.
+            </p>
+          </div>
+
+          <div class="update-progress" aria-hidden="true">
+            <span class="bar" id="updateBar"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- statistics -->
+    <section class="section" id="join" aria-label="Statistics">
+      <div class="container">
+        <div class="stats-card">
+          <div class="stats-left">
+            <h2>Join us in our mission to make coding and AI accessible to all.</h2>
+            <p>
+              We're committed to building high-quality learning experiences that help people
+              gain skills, confidence, and real progress.
+            </p>
+            <a class="btn btn-primary" href="#contact">Partner with Blackbox</a>
+          </div>
+
+          <div class="stats-grid" role="list">
+            <div class="stat" role="listitem">
+              <div class="stat-icon" aria-hidden="true">🎓</div>
+              <div>
+                <div class="stat-number">20 Million</div>
+                <div class="stat-label">Engaged Students</div>
+              </div>
+            </div>
+
+            <div class="stat" role="listitem">
+              <div class="stat-icon" aria-hidden="true">🧑‍💻</div>
+              <div>
+                <div class="stat-number">1 Billion</div>
+                <div class="stat-label">Lines of Code</div>
+              </div>
+            </div>
+
+            <div class="stat" role="listitem">
+              <div class="stat-icon" aria-hidden="true">🍎</div>
+              <div>
+                <div class="stat-number">320,000</div>
+                <div class="stat-label">Supported Teachers</div>
+              </div>
+            </div>
+
+            <div class="stat" role="listitem">
+              <div class="stat-icon" aria-hidden="true">🏫</div>
+              <div>
+                <div class="stat-number">75,000</div>
+                <div class="stat-label">Schools Reached</div>
+              </div>
+            </div>
+
+            <div class="stat" role="listitem">
+              <div class="stat-icon" aria-hidden="true">🌍</div>
+              <div>
+                <div class="stat-number">190+</div>
+                <div class="stat-label">Countries</div>
+              </div>
+            </div>
+
+            <div class="stat" role="listitem">
+              <div class="stat-icon" aria-hidden="true">👥</div>
+              <div>
+                <div class="stat-number">5.2 Million</div>
+                <div class="stat-label">Players</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section class="section" id="contact" aria-label="Contact">
+      <div class="container">
+        <div class="contact-card">
+          <div>
+            <h2>Contact Us</h2>
+            <p class="muted">Want a demo, partnership, or classroom pilot? Send us a message.</p>
+          </div>
+
+          <form class="form" onsubmit="event.preventDefault(); alert('Submitted!');">
+            <div class="row">
+              <label>
+                <span>Name</span>
+                <input required type="text" placeholder="Your name" />
+              </label>
+              <label>
+                <span>Email</span>
+                <input required type="email" placeholder="you@example.com" />
+              </label>
+            </div>
+
+            <label>
+              <span>Message</span>
+              <textarea required rows="4" placeholder="Tell us what you're building..."></textarea>
+            </label>
+
+            <button class="btn btn-primary" type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- footer -->
+  <footer class="footer" aria-label="Footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">Blackbox</div>
+        <div class="muted">© <span id="year"></span> Blackbox. All rights reserved.</div>
+      </div>
+
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="home.js"></script>
+</body>
+</html>
