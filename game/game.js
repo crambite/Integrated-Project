@@ -246,23 +246,23 @@ let count = 0
 
 //enemy
 const enemy_image = new Image();
-enemy_image.src = "../assets/characters/enemy.png";
+enemy_image.src = "assets/characters/enemy.png";
 
 //player
 const player_image = new Image();
-player_image.src = "../assets/characters/robot.jpg";
+player_image.src = "assets/characters/robot.jpg";
 
 //wall
 const wall_image = new Image();
-wall_image.src = "../assets/map/stone_wall.jpg";
+wall_image.src = "assets/map/stone_wall.jpg";
 
 //fog
 const fog_image = new Image();
-fog_image.src = "../assets/map/fog.png";
+fog_image.src = "assets/map/fog.png";
 
 //exit
 const exit_image = new Image();
-exit_image.src = "../assets/map/exit.jpg"
+exit_image.src = "assets/map/exit.jpg"
 
 function use(drone) {
     if (drone === "Kill") {
@@ -441,7 +441,7 @@ function player_turn() {
     if (player.collision(exit)) {
         display("You Win");
 
-        window.location.href = "../visual_novel_stuff/visual_novel.html"
+        window.location.href = "../visual_novel/visual_novel.html"
 
         return;
     }

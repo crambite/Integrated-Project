@@ -96,7 +96,7 @@ enter.addEventListener("click", () => {
 
     sessionStorage.setItem("map", map_id);
 
-    window.location.href = "../game.html";
+    window.location.href = "../game/game.html";
 })
 
 //next act button
@@ -118,7 +118,7 @@ next_act.addEventListener("click", () => {
         //configure next act button looks
         next_act_pos.style.top = 95 + "%";
         next_act_pos.style.left = 80 + "%";
-        next_act_image.src = "../../assets/map/lab.png";
+        next_act_image.src = "assets/lab.png";
         next_act_name.textContent = "To Lab";
 
         //save the act player is currently on
@@ -133,7 +133,7 @@ next_act.addEventListener("click", () => {
         //configure next act button looks
         next_act_pos.style.top = 90 + "%";
         next_act_pos.style.left = 68 + "%";
-        next_act_image.src = "../../assets/map/globe.png";
+        next_act_image.src = "assets/globe.png";
         next_act_name.textContent = "To World";
 
         //save the act player is currently on
@@ -177,6 +177,6 @@ window.addEventListener("load", () => {
     //configure next act button looks
     next_act_pos.style.top = 95 + "%";
     next_act_pos.style.left = 80 + "%";
-    next_act_image.src = "../../assets/map/lab.png";
+    next_act_image.src = "assets/lab.png";
     next_act_name.textContent = "To Lab";
 });

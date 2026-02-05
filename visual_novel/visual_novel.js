@@ -42,7 +42,7 @@ function skipText() {
     if (textingEnded) {
         //return to map once finished
         if (textIndex >= textLists.length) {
-            window.location.href = "../game/map_selection/map.html" //go to map
+            window.location.href = "../map_selection/map.html" //go to map
             return;
         }
         printText(textLists[textIndex]); // this one animates
