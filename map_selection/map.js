@@ -193,3 +193,23 @@ window.addEventListener("load", () => {
 
     resize();
 });
+
+//hiding levels on the map if requirements not met
+const Enemies = document.getElementById("Enemies");
+const The_Exit = document.getElementById("The_Exit");
+const Familiar_Scene = document.getElementById("Familiar_Scene");
+
+//starting
+if (data["The_Room"] === false) {
+    Enemies.parentElement.style.top = -1000 + "px";
+}
+
+if (data["Enemies"] === false) {
+    The_Exit.parentElement.style.top = -1000 + "px";
+    next_act.parentElement.style.top = -1000 + "px";
+}
+
+//final stage
+if (data["North_America"] === false || data["South_America"] === false || data["Asia"] === false || data["Africa"] === false || data["Australia"] === false) {
+    Familiar_Scene.parentElement.style.top = -1000 + "px";
+}
