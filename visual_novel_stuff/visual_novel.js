@@ -1,14 +1,11 @@
-
-
 let intervalID = null;
-//put story text here
-const textLists = [
-  "give me more buffer time pls",
-  "we are charlie kirk"
-];
+const map = sessionStorage.getItem("map")
 
 let textIndex = 0;
 let textingEnded = false;
+
+let textLists;
+textLists = window.visual_novel_text[map];
 
 const block_element = document.getElementById("story_text");
 
@@ -43,9 +40,10 @@ function printText(targetText) {
 function skipText() {
     // If already finished typing, go next text (animated)
     if (textingEnded) {
+        //return to map once finished
         if (textIndex >= textLists.length) {
-        console.log("move to next page");
-        return;
+            window.location.href = "../game/map_selection/map.html" //go to map
+            return;
         }
         printText(textLists[textIndex]); // this one animates
         return;

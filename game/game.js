@@ -441,7 +441,7 @@ function player_turn() {
     if (player.collision(exit)) {
         display("You Win");
 
-        window.location.href = "map_selection/map.html"
+        window.location.href = "../visual_novel_stuff/visual_novel.html"
 
         return;
     }
