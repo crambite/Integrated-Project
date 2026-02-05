@@ -319,7 +319,19 @@ function player_turn() {
         //update player data to mark map as completed
         let data = JSON.parse(sessionStorage.getItem("data"));
 
+        //set map state to cleared
         data[map_id] = true;
+
+        //determine the player badge
+        if (turns === window.map_list.plat) {
+            data[map_id + "_plat"] = true;
+        }
+        else if (turns <= window.map_list[map_id + "_gold"]) {
+            data[map_id + "_gold"] = true;
+        }
+        else if (turns <= window.map_list[map_id + "_silver"]) {
+            data[map_id + "_silver"] = true;
+        }
 
         sessionStorage.setItem("data", JSON.stringify(data));
 
@@ -366,7 +378,6 @@ function enemy_turn(steps) {
         clearInterval(interval);
         interval = null;
     }
-
 }
 
 //reset game back to start

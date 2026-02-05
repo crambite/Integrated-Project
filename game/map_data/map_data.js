@@ -161,6 +161,32 @@ const map_list = {
                         "wwwwwwwwwwwwwwwwwwwwwwww",
                         "wwwwwwwwwwwwwwwwwwwwwwww"
                         ],
+
+    //requirements to get badges silver and up (bronze is completion)
+    //silver
+    The_Room_silver : 3,
+    Enemies_silver : 4,
+    The_Exit_silver : 5,
+    North_America_silver : 7,
+    Australia_silver : 7,
+    Africa_silver : 7,
+    Asia_silver : 7,
+    South_America_silver : 7, 
+    Familiar_Scene_silver : 7,
+
+    //gold
+    The_Room_gold : 2,
+    Enemies_gold : 3,
+    The_Exit_gold : 4,
+    North_America_gold : 5,
+    Australia_gold : 5,
+    Africa_gold : 5,
+    Asia_gold : 5,
+    South_America_gold : 5, 
+    Familiar_Scene_gold : 5,
+
+    //plat
+    plat : 1
 };
 
 window.map_list = map_list;
