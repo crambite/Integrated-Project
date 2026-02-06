@@ -63,11 +63,11 @@ for (let drone of drones) {
 
         //reset all other drones
         for (let d of drones) {
-            d.style.border = "3px solid rgb(8, 9, 110)";
+            d.style.border = "3px solid rgba(13, 52, 143, 0.14)";
         }
 
         //highlight current selected drone
-        drone.style.border = "3px solid rgb(255, 43, 43)";
+        drone.style.border = "3px solid rgb(105, 20, 20)";
 
         sessionStorage.setItem("drone", drone_name);
     })
@@ -213,6 +213,9 @@ if (data["The_Room"] === false) {
 
 if (data["Enemies"] === false) {
     The_Exit.parentElement.style.top = -1000 + "px";
+}
+
+if(data["The_Exit"] === false) {
     next_act.parentElement.style.top = -1000 + "px";
 }
 

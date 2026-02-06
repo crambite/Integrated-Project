@@ -1,6 +1,8 @@
 let data = {
     //player details
     username : "",
+    phone_number : "",
+    password : "",
 
     //map completion status
     The_Room : false,

@@ -11,13 +11,26 @@
     <script type="module" src="../player_data/auth.js" defer></script>
 </head>
 <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Login • Blackbox Protocol</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
     <main class="screen">
         <section class="panel">
             <header class="header">
-                <h1 class="title">Sign in</h1>
+                <h1 class="title">Register</h1>
             </header>
 
             <form class="form" autocomplete="on">
+                <label class="field">
+                    <span class="label">Username</span>
+                    <input class="input" type="text" name="username" placeholder="Enter username" required />
+                </label>
 
                 <label class="field">
                     <span class="label">Phone Number</span>
@@ -29,12 +42,16 @@
                     <input class="input" type="password" name="password" placeholder="Enter password" required />
                 </label>
 
-                <button class="primary-btn" type="submit">Login</button>
+                <label class="field">
+                    <span class="label">Confirm Password</span>
+                    <input class="input" type="password" name="confirm_password" placeholder="Enter password" required />
+                </label>
 
-                <a class="links" href="register.html" aria-disabled="true">Register</a>
-                <a class="links" href="menu.html" aria-disabled="true">Continue Without Signing In</a>
+                <button class="primary-btn" type="submit">Register</button>
+
+                <a class="links" href="login.html" aria-disabled="true">Login</a>
             </form>
-        </section>
+    </section>
     </main>
 </body>
 </html>

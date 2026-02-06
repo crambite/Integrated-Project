@@ -1,5 +1,6 @@
 import { Obj } from "./entities/obj.js";
 import { player_controller } from "./controls/player_controls.js"
+import { patch_player_data } from "../player_data/auth.js"
 
 //run button
 const run = document.querySelector(".run")
@@ -314,6 +315,8 @@ function player_turn() {
     }
 
     if (player.collision(exit)) {
+        clearInterval(interval);
+
         display("You Won");
 
         //update player data to mark map as completed
@@ -335,10 +338,16 @@ function player_turn() {
 
         sessionStorage.setItem("data", JSON.stringify(data));
 
-        //wait 500ms before going to vn screen
-        setTimeout(() => {
-            window.location.href = "../visual_novel/visual_novel.html";
-        }, 500);
+        //update player saves in restdb
+        patch_player_data();
+
+        //wait for patch to be applied
+        window.addEventListener("patch_applied", () => {
+            //wait 500ms before going to vn screen
+            setTimeout(() => {
+                window.location.href = "../visual_novel/visual_novel.html";
+            }, 500);
+        })
 
         return;
     }
