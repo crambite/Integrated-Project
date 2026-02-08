@@ -1,4 +1,4 @@
-let data = {
+let player_data = {
     //player details
     username : "",
     phone_number : "",
@@ -53,5 +53,5 @@ let data = {
 
 //ensure that data wont be overide
 if (!sessionStorage.getItem("data")) {
-    sessionStorage.setItem("data", JSON.stringify(data));
+    sessionStorage.setItem("data", JSON.stringify(player_data));
 }

@@ -9,7 +9,7 @@ body {
   align-items: flex-end;      /* UI at bottom */
   justify-content: center;
   color: #d7f9ff;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   overflow: hidden;           /* prevent scrollbars from fixed layers */
 }
 

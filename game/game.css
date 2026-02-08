@@ -6,6 +6,8 @@ body{
     flex-direction: row;
     overflow: hidden; /* hide the scroll bar */
     background-color: rgb(0, 0, 0);
+
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 }
 
 /* game console */
