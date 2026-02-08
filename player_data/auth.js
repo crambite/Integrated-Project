@@ -152,6 +152,9 @@ export function patch_player_data() {
 
     //if player dosent create an acc
     if (!player_id) {
+        //if not logged in, still throws to vn screen
+        window.dispatchEvent(new Event("patch_applied"));
+        
         return;
     }
 

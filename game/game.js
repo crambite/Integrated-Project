@@ -338,9 +338,6 @@ function player_turn() {
 
         sessionStorage.setItem("data", JSON.stringify(data));
 
-        //update player saves in restdb
-        patch_player_data();
-
         //wait for patch to be applied
         window.addEventListener("patch_applied", () => {
             //wait 500ms before going to vn screen
@@ -348,6 +345,9 @@ function player_turn() {
                 window.location.href = "../visual_novel/visual_novel.html";
             }, 500);
         })
+
+        //update player saves in restdb
+        patch_player_data();
 
         return;
     }
