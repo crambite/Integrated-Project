@@ -140,7 +140,7 @@ function use(drone) {
 
         fow[clear_y][clear_x] = "";
     }
-    else {
+    else if (drone === "Reveal") {
         //gets the x, y of all enemies and clears the fog on it
         for (let enemy of enemies) {
             const clear_x = enemy.x / tile_size;
