@@ -507,6 +507,12 @@ window.addEventListener("load", () => {
     window.intersections = intersections;
     window.ghost = ghost;
 
+    //debug
+    window.debug = () => {
+        player.x = exit.x;
+        player.y = exit.y;
+    };
+
     draw();
 
     //store player controls in the window for pyodide to reference
