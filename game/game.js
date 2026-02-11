@@ -220,7 +220,7 @@ function win() {
         //go to vn screen
         next.addEventListener("click", () => {
             //go to final animation if final map
-            if (data["Familiar_Scene"] === true) {
+            if (data["Familiar_Scene"] === true && data["end"] === false) {
                 window.location.href = "../cutscenes/ending.html";
 
                 return;

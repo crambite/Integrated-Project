@@ -48,6 +48,10 @@ let player_data = {
     Asia_plat : false,
     South_America_plat : false, 
     Familiar_Scene_plat : false,
+
+    //cutscene played
+    open : true,
+    end : false,
 }
 
 

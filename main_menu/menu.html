@@ -27,7 +27,7 @@
 
         play.addEventListener("click", () => {
             //first time cutscene
-            if (data["The_Room"] === false) {
+            if (data["The_Room"] === false && data["open"] === false) {
                 window.location.href = "../cutscenes/opening.html";
 
                 return;

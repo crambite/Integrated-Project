@@ -6,10 +6,46 @@ import {GLTFLoader} from "jsm/loaders/GLTFLoader.js";
 let w = window.innerWidth;
 let h = window.innerHeight;
 const scene = new THREE.Scene();
+const data = JSON.parse(sessionStorage.getItem("data"));
+let model = "./assets/Small.glb";
+
+//decide which model to use
+let count = 0;
+
+if (data["North_America"] === true) {
+  count += 1;
+}
+
+if (data["South_America"] === true) {
+  count += 1;
+}
+
+if (data["Asia"] === true) {
+  count += 1;
+}
+
+if (data["Africa"] === true) {
+  count += 1;
+}
+
+if (data["Australia"] === true) {
+  count += 1;
+}
+
+if (count >= 2) {
+  model = "./assets/Small+legs.glb";
+}
+
+if (count >= 4) {
+  model = "./assets/Small+armslegs.glb";
+}
+
+if (data["North_America"] === true && data["South_America"] === true && data["Asia"] === true && data["Africa"] === true && data["Australia"] === true) {
+  model = "./assets/Big.glb";
+}
 
 if (w<h){
   [w, h] = [h, w];
-
 }
 
 
@@ -25,7 +61,7 @@ const ctrls = new OrbitControls(camera, renderer.domElement);
 ctrls.enableDamping = true;
 
 const gltfLoader = new GLTFLoader();
-gltfLoader.load('./assets/integratedProject.glb', (gltf) =>{
+gltfLoader.load(model, (gltf) =>{
   const robot = gltf.scene;
 
   robot.position.set(0,-2 ,0);
