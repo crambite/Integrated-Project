@@ -125,6 +125,10 @@ fog_image.src = "assets/map/fog.png";
 const exit_image = new Image();
 exit_image.src = "assets/map/exit.png"
 
+//sounds
+const lazer_sound = new Audio("./assets/sounds/lazer.mp3")
+const walk_sound = new Audio("./assets/sounds/walk.mp3")
+
 function use(drone) {
     if (drone === "Kill") {
         //random enemy
@@ -346,11 +350,17 @@ function player_turn() {
     if (instruction === "up") {
         player.up();
 
+        //play audio
+        walk_sound.play()
+
         //change sprite direction
         current_player_image = player_image.up;
     }
     else if (instruction === "down") {
         player.down();
+
+        //play audio
+        walk_sound.play()
 
         //change sprite direction
         current_player_image = player_image.down;
@@ -358,11 +368,17 @@ function player_turn() {
     else if (instruction === "left") {
         player.left();
 
+        //play audio
+        walk_sound.play()
+
         //change sprite direction
         current_player_image = player_image.left;
     }
     else if (instruction === "right") {
         player.right();
+
+        //play audio
+        walk_sound.play()
 
         //change sprite direction
         current_player_image = player_image.right;
@@ -370,6 +386,9 @@ function player_turn() {
     else if (instruction === "shoot") {
         //allows us to draw the shot
         is_shooting = true;
+
+        //play audio
+        lazer_sound.play()
 
         player.shoot(enemies);
     }

@@ -7,6 +7,9 @@ setTimeout(() => {
     loading.style.top = -1000 + "px"
 }, 3000)
 
+//sound
+const sound = new Audio("./assets/vn_audio.wav");
+
 let textIndex = 0;
 let textingEnded = false;
 
@@ -33,6 +36,7 @@ function printText(targetText) {
 
         if (currentLen < targetLength) {
             block_element.textContent = targetText.slice(0, currentLen + 1);
+            sound.play()
         } 
         else {
             clearInterval(intervalID);
@@ -40,7 +44,7 @@ function printText(targetText) {
             textingEnded = true;
             textIndex++; // move to next line in the list
         }
-    }, 100);
+    }, 50);
 }
 
 function skipText() {
@@ -67,7 +71,10 @@ function skipText() {
     textIndex++; // increment ONLY after we finish current line
 }
 
-
-// start
 printText(textLists[textIndex]);
 
+// start
+/* window.addEventListener("click", () => {
+    sound.play().catch(() => {}); // unlock audio
+    printText(textLists[textIndex]);
+}, { once: true }); */
