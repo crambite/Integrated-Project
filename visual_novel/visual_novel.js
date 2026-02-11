@@ -1,6 +1,12 @@
 let intervalID = null;
 const map = sessionStorage.getItem("map")
 
+//loading
+const loading = document.getElementById("loading")
+setTimeout(() => {
+    loading.style.top = -1000 + "px"
+}, 3000)
+
 let textIndex = 0;
 let textingEnded = false;
 

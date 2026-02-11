@@ -9,6 +9,9 @@
       margin: 0;
     }
   </style>
+  
+  <link rel="stylesheet" href="visual_novel.css">
+
   <script type="importmap">
     {
       "imports": {
@@ -17,31 +20,39 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="visual_novel.css">
-
+  <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js" type="module" defer></script>
+  <script type="module" src="three.js" defer></script>
+  <script src="visual_novel_text.js" defer></script>
+  <script src="visual_novel.js" defer></script>
 </head>
 <body>
-    <section class="content">
-      <div class="dialogue">
-        <span id="speaker">SYSTEM</span>
-        <div id="story_text"></div>
+  <!-- loading -->
+  <div id="loading">
+    <!--lottie-->
+    <dotlottie-wc
+      src="https://lottie.host/fb4eb332-b312-426d-9547-9a530343b13b/XAy1WHdSFP.lottie" autoplay loop>
+    </dotlottie-wc>
+
+    <p>Initialising Systems...</p>
+  </div>
+
+  <section class="content">
+    <div class="dialogue">
+      <span id="speaker">SYSTEM</span>
+      <div id="story_text"></div>
+    </div>
+
+    <div class="footerline"></div>
+
+    <div class="controls">
+      <div class="hint">
       </div>
 
-      <div class="footerline"></div>
-
-      <div class="controls">
-        <div class="hint">
-        </div>
-
-        <div style="display:flex; gap:10px;">
-          <button class="btn" id="btn_skip" type="button" onclick ="skipText()">Skip / Next</button>
-        </div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn" id="btn_skip" type="button" onclick ="skipText()">Skip / Next</button>
       </div>
-    </section>
-    <div id="canvas"></div>
-
-<script type="module" src="three.js"></script>
-<script src="visual_novel_text.js"></script>
-<script src="visual_novel.js"></script>
+    </div>
+  </section>
+  <div id="canvas"></div>
 </body>
 </html>

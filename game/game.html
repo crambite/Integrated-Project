@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="game_console/game_console.css">
     <link rel="stylesheet" href="game.css">
 
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.29.1/full/pyodide.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.43.3/ace.js" defer></script>
     <script src="text_editor/pyodide.js" defer></script>
@@ -19,6 +20,16 @@
     <script type="module" src="game.js" defer></script>
 </head>
 <body>
+    <!-- Loading -->
+    <div id="loading">
+        <!--lottie-->
+        <dotlottie-wc
+            src="https://lottie.host/fb4eb332-b312-426d-9547-9a530343b13b/XAy1WHdSFP.lottie" autoplay loop>
+        </dotlottie-wc>
+
+        <p>Initialising Systems...</p>
+    </div>
+
     <!-- Game Console -->
     <div id="game_console">
         <!-- Nav Bar -->

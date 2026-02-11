@@ -2,6 +2,12 @@ import { Obj } from "./entities/obj.js";
 import { player_controller } from "./controls/player_controls.js"
 import { patch_player_data } from "../player_data/auth.js"
 
+//loading
+const loading = document.getElementById("loading")
+setTimeout(() => {
+    loading.style.top = -1000 + "px"
+}, 3000)
+
 //run button
 const run = document.querySelector(".run")
 
