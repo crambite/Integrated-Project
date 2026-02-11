@@ -195,6 +195,66 @@ function get_coords(map) {
     use(sessionStorage.getItem("drone"));
 };
 
+//win
+function win() {
+    const win = document.getElementById("win_screen");
+    const next = document.getElementById("next");
+    const bronze = document.getElementById("bronze");
+    const silver = document.getElementById("silver");
+    const silver_req = document.getElementById("silver_req");
+    const gold = document.getElementById("gold");
+    const gold_req = document.getElementById("gold_req");
+    const plat = document.getElementById("plat");
+    
+    //make win screen viewable
+    win.style.opacity = 1;
+
+    //display badge requirements
+    silver_req.textContent = `Complete the map in ${window.map_list[map_id + "_silver"]} turns or less.`;
+    gold_req.textContent = `Complete the map in ${window.map_list[map_id + "_gold"]} turns or less.`;
+
+    
+    //wait for patch to be applied
+    window.addEventListener("patch_applied", () => {
+        //go to vn screen
+        next.addEventListener("click", () => {
+            window.location.href = "../visual_novel/visual_novel.html";
+        });
+    });
+
+    //update player data to mark map as completed
+    let data = JSON.parse(sessionStorage.getItem("data"));
+
+    //set map state to cleared
+    data[map_id] = true;
+
+    //displat bronze badge
+    bronze.src = "./assets/badges/bronze.png";
+
+    //determine the player badge and display the image of the badge, and badge requirements on the win screen
+    if (turns === window.map_list.plat) {
+        data[map_id + "_plat"] = true;
+
+        plat.src = "./assets/badges/plat.png";
+    }
+    if (turns <= window.map_list[map_id + "_gold"]) {
+        data[map_id + "_gold"] = true;
+
+        gold.src = "./assets/badges/gold.png";
+    }
+    if (turns <= window.map_list[map_id + "_silver"]) {
+        data[map_id + "_silver"] = true;
+
+        silver.src = "./assets/badges/silver.png";
+    }
+
+    //store the updated data
+    sessionStorage.setItem("data", JSON.stringify(data));
+    
+    //update player saves in restdb
+    patch_player_data();
+};
+
 //draw the assets in the game console
 function draw() {
     //clear the board of previous assets
@@ -317,37 +377,7 @@ function player_turn() {
     if (player.collision(exit)) {
         clearInterval(interval);
 
-        display("You Won");
-
-        //update player data to mark map as completed
-        let data = JSON.parse(sessionStorage.getItem("data"));
-
-        //set map state to cleared
-        data[map_id] = true;
-
-        //determine the player badge
-        if (turns === window.map_list.plat) {
-            data[map_id + "_plat"] = true;
-        }
-        else if (turns <= window.map_list[map_id + "_gold"]) {
-            data[map_id + "_gold"] = true;
-        }
-        else if (turns <= window.map_list[map_id + "_silver"]) {
-            data[map_id + "_silver"] = true;
-        }
-
-        sessionStorage.setItem("data", JSON.stringify(data));
-
-        //wait for patch to be applied
-        window.addEventListener("patch_applied", () => {
-            //wait 500ms before going to vn screen
-            setTimeout(() => {
-                window.location.href = "../visual_novel/visual_novel.html";
-            }, 500);
-        })
-
-        //update player saves in restdb
-        patch_player_data();
+        win()
 
         return;
     }

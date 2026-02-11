@@ -147,6 +147,7 @@ body{
 	flex-direction: column;
 	align-items: center;
 	background-color: rgb(22, 22, 22);
+	color: rgb(255, 255, 255);
 	transform: translate(-50%, -50%); /* allows me to centre it without any calculations */
 }
 #close{
@@ -157,8 +158,6 @@ body{
 }
 #map_name_cfm{
 	font-size: 5vh;
-
-	color: white;
 }
 .drone{
 	margin: 10px;
@@ -167,6 +166,7 @@ body{
 
 	display: flex;
 	flex-direction: row;
+	align-items: center;
 	background-color: rgba(6, 8, 16, 0.35);
 	border: 3px solid rgba(13, 52, 143, 0.14);
 }
@@ -175,14 +175,17 @@ body{
 	box-shadow: 0 0 1rem rgba(255, 43, 43, 0.7);
 }
 .drone img{
+	margin: 2px;
 	width: 7vw;
-	min-width: 4rem;
+	min-width: 2rem;
 	height: 7vw;
-	min-height: 4rem;
+	min-height: 2rem;
 }
 .description{
-	color: rgb(255, 255, 255);
+	font-size: 2vh;
 }
+
+/* enter button */
 #enter{
 	margin-top: 20px;
 	width: 50%;
@@ -200,7 +203,5 @@ body{
 }
 #enter p{
 	margin: 0;
-	font-size: clamp(1rem, 5vh, 2rem);
-
-	color: rgb(255, 255, 255);
+	font-size: 5vh;
 }

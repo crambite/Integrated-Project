@@ -1,107 +1,3 @@
-/* nav bar */
-#nav {
-    height: 3rem;
-
-    display: flex;
-    align-items: center;
-    background-color: rgb(22, 22, 22);
-}
-#return{
-    margin: 10px;
-
-    margin-right: auto; /* stick to left */
-}
-
-#map{
-    text-align: center;
-    color: rgb(255, 255, 255);
-}
-#misc{
-    margin: 10px; 
-    gap: 0.5rem;
-
-    margin-left: auto; /* stick to right */
-    display: flex; 
-}
-#nav button{
-    width: 2rem;
-    height: 2rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* help menu */
-#help_menu{
-    padding: 0 2rem;
-    width: 100vw;
-    height: 100vh;
-    z-index: 999; /* appears over everything */
-    top: -1000px; /* hidden by default */
-
-    position: fixed;
-    background-color: rgb(22, 22, 22);
-    color: white;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-
-.help_section{
-    margin-bottom: 2rem;
-}
-
-/* headings */
-#help_menu h2{
-    margin-top: 0;
-    margin-bottom: 1.5rem;
-}
-
-#help_menu h3{
-    margin-bottom: 0.5rem;
-}
-
-/* lists */
-#help_menu ul{
-    padding-left: 1.5rem;
-}
-
-#help_menu li{
-    margin-bottom: 0.4rem;
-}
-
-/* code blocks */
-#help_menu code{
-    font-family: monospace;
-    color: #7dd3fc;
-}
-
-#help_menu pre{
-    background-color: rgb(30, 30, 30);
-    padding: 0.75rem;
-    overflow-x: auto;
-}
-
-/* settings */
-#settings_menu{
-    width: 30vw;
-    min-width: 20rem; /* prevent settings from apeparing too small */
-    height: 60vh;   
-    z-index: 999; /* should appear over everything */ 
-    top: -1000px;
-
-    background-color: rgb(22, 22, 22);
-    position: fixed;
-}
-/* close button */
-.close{
-    right: 0;
-    position: absolute;
-}
-
 /* game content */
 #game_content{
     display: flex;
@@ -125,4 +21,73 @@
     position: absolute;
     color: rgb(255, 255, 255);
     background-color: rgb(22, 22, 22);
+}
+
+/* win screen */
+#win_screen{
+    padding-bottom: 12px;
+    width: 30vw;
+    min-width: 20rem; /* prevent win screen from apeparing too small */
+    z-index: 999; /* should appear over everything */ 
+    top: 50%;
+    left: calc((100vw - 40rem) / 2); /* 40 rem is the code console's width 1370px and above */
+    opacity: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    background-color: rgb(22, 22, 22);
+    position: fixed;
+    transform: translate(-50%, -50%); /* so that it can be centred */
+}
+.badges{
+    margin: 5px;
+    width: 80%;
+    height: 15%;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(6, 8, 16, 0.35);
+	border: 3px solid rgba(13, 52, 143, 0.14);
+}
+.badges img{
+    margin: 3px;
+	width: 7vw;
+	min-width: 2rem;
+	height: 7vw;
+	min-height: 2rem;
+}
+.badges p{
+    font-size: 2vh;
+}
+/* next button */
+#next{
+    margin-top: 20px;
+	width: 50%;
+	height: clamp(2rem, 10vh, 4rem);
+	border-radius: 20px;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgb(8, 9, 110);
+}
+#next:hover{
+	transform: scale(1.2);
+	box-shadow: 0 0 1rem rgba(255, 43, 43, 0.7);
+}
+#next p{
+	margin: 0;
+	font-size: 5vh;
+}
+@media (max-width: 1369px){
+    #win_screen {
+        left: calc((100vw - 20rem) / 2); /* 20 rem is the code console's width 1369px and below */
+    }
+    .badges{
+        margin: 2px;
+    }
 }

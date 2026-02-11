@@ -116,6 +116,11 @@ for (let i = 0; i < maps.length; i++) {
 //close confirm screen
 close_btn.addEventListener("click", () => {
     confirm_screen.style.top = -1000 + "px";
+
+    //reset all other drones
+        for (let d of drones) {
+            d.style.border = "3px solid rgba(13, 52, 143, 0.14)";
+        }
 })
 
 //store all data in session storage and sends user to respective map
