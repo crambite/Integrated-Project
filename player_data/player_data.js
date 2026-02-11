@@ -50,8 +50,8 @@ let player_data = {
     Familiar_Scene_plat : false,
 
     //cutscene played
-    open : true,
-    end : false,
+    open : false,
+    end : false
 }
 
 

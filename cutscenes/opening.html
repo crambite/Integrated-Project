@@ -22,6 +22,11 @@
 
     <script>
         const video = document.getElementById('cutscene');
+        const data = JSON.parse(sessionStorage.getItem("data"));
+
+        //set animation played to true
+        data["open"] = true;
+        sessionStorage.setItem("data", JSON.stringify(data))
 
         video.addEventListener('ended', (event) => {
             window.location.href = "../map_selection/map.html";
