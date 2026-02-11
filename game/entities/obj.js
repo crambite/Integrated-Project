@@ -56,13 +56,92 @@ export class Obj{
 
     //checks
     is_intersection() {
-        //check if player is at the intersection
-        if (this.collision(window.intersections)) {
-            return true;
+        const x = this.x / this.width;
+        const y = this.y / this.height;
+        const map = window.current_map;
+
+        //in case near an edge
+        function safety(x, y) {
+            if (y < 0 || x < 0) {
+                return "w";
+            }
+            if (y >= map.length) {
+                return "w";
+            }
+            if (x >= map[y].length) {
+                return "w";
+            }
+            return map[y][x];
         }
-        else {
+
+        //check if left right up down is empty
+        const left = safety(x - 1, y) !== "w";
+        const right = safety(x + 1, y) !== "w";
+        const up = safety(x, y - 1) !== "w";
+        const down = safety(x, y + 1) !== "w";
+
+        //check if it is a dead end
+        let count = 0;
+        const checks = [left, right, up, down];
+
+        for (let check of checks) {
+            if (check) {
+                count += 1;
+            }
+        }
+
+        if (count <= 1) {
             return false;
         }
+
+        //check if it is a straight line
+        if (count === 2 && ((left && right) || (up && down))) {
+            return false;
+        }
+        
+        return true
+    }
+
+    is_dead_end() {
+        const x = this.x / this.width;
+        const y = this.y / this.height;
+        const map = window.current_map;
+
+        //in case near an edge
+        function safety(x, y) {
+            if (y < 0 || x < 0) {
+                return "w";
+            }
+            if (y >= map.length) {
+                return "w";
+            }
+            if (x >= map[y].length) {
+                return "w";
+            }
+            return map[y][x];
+        }
+
+        //check if left right up down is empty
+        const left = safety(x - 1, y) !== "w";
+        const right = safety(x + 1, y) !== "w";
+        const up = safety(x, y - 1) !== "w";
+        const down = safety(x, y + 1) !== "w";
+
+        //check if it is a dead end
+        let count = 0;
+        const checks = [left, right, up, down];
+
+        for (let check of checks) {
+            if (check) {
+                count += 1;
+            }
+        }
+
+        if (count > 1) {
+            return false;
+        }
+
+        return true;
     }
 
     //clear fow (need to start with something.clear_fow(fow))
@@ -81,7 +160,7 @@ export class Obj{
             const clear_y = this.y / this.height + y;
 
             //stop clearing at boundary
-            if (clear_y < 0 || clear_y > fow.length) {
+            if (clear_y < 0 || clear_y > (fow.length - 1)) {
                 continue
             }
 

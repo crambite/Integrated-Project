@@ -9,6 +9,7 @@ function set_controls(pyodide) {
     pyodide.globals.set("right", window.player_controls.right);
     pyodide.globals.set("shoot", window.player_controls.shoot);
     pyodide.globals.set("is_intersection", window.ghost.is_intersection.bind(window.ghost));
+    pyodide.globals.set("is_dead_end", window.ghost.is_dead_end.bind(window.ghost));
 };
 
 async function main() {

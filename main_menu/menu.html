@@ -9,17 +9,33 @@
   <script src="../player_data/player_data.js"></script>
 </head>
 <body>
-  <main class="screen">
+    <main class="screen">
     <section class="panel">
-      <h1 class="title">Blackbox Protocol</h1>
+        <h1 class="title">Blackbox Protocol</h1>
 
-      <div class="btn-stack">
-        <button class="menu-btn" onclick="location.href='../map_selection/map.html'">Play</button>
+        <div class="btn-stack">
+        <button class="menu-btn" id="play">Play</button>
         <button class="menu-btn" onclick="location.href='settings.html'">Settings</button>
         <button class="menu-btn" onclick="location.href='badges.html'">Badges</button>
-      </div>
+        </div>
     </section>
-  </main>
+    </main>
+
+    <script>
+        const play = document.getElementById("play")
+        const data = JSON.parse(sessionStorage.getItem("data"))
+
+        play.addEventListener("click", () => {
+            //first time cutscene
+            if (data["The_Room"] === false) {
+                window.location.href = "../cutscenes/opening.html";
+
+                return;
+            }
+
+            window.location.href = "../map_selection/map.html";
+        });
+    </script>
 </body>
 
 </html>

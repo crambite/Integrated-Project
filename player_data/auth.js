@@ -77,11 +77,13 @@ if (form) {
             })
             .then(response => {
                 if (!response.ok) {
-                    //reset data
+                    //reset data (remove the username, phone num and password)
                     data = JSON.parse(sessionStorage.getItem("data"));
 
                     throw new Error("Account already exists");
                 }
+
+                //parses the response
                 return response.json();
             })
             .then(created => {
@@ -113,6 +115,8 @@ if (form) {
             if (!response.ok) {
                 throw new Error("Request failed");
             }
+
+            //parses the response
             return response.json();
         })
 
@@ -124,6 +128,7 @@ if (form) {
                 return;
             }
 
+            //unique phone numbers, hence players[0] will always be that specific phone number
             const player = players[0];
 
             //password authentication

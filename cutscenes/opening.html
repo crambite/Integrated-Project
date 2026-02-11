@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <video id="cutscene" src="assets/opening.mp4" autoplay></video>
+
+    <style>
+        body{
+            overflow: hidden;
+            background-color: rgb(22, 22, 22);
+        }
+        #cutscene{
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+    </style>
+
+    <script>
+        const video = document.getElementById('cutscene');
+
+        video.addEventListener('ended', (event) => {
+            window.location.href = "../map_selection/map.html";
+        });
+    </script>
+</body>
+</html>

@@ -22,6 +22,7 @@ window.board_width = board_width
 //map
 const map_id = sessionStorage.getItem("map");
 const map = window.map_list[map_id];
+window.current_map = map
 
 //intersections
 let intersections = new Set();
@@ -218,6 +219,13 @@ function win() {
     window.addEventListener("patch_applied", () => {
         //go to vn screen
         next.addEventListener("click", () => {
+            //go to final animation if final map
+            if (data["Familiar_Scene"] === true) {
+                window.location.href = "../cutscenes/ending.html";
+
+                return;
+            }
+
             window.location.href = "../visual_novel/visual_novel.html";
         });
     });
