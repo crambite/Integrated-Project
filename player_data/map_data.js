@@ -136,7 +136,7 @@ const map_list = {
                     "wwwwwwww ww www www ww w",
                     "w     ww wwewww www ww w",
                     "w wwweww ww  e  www ww w",
-                    "w wwweww ww www www ww w",
+                    "w www ww ww www www ww w",
                     "w www ww ww www www ww w",
                     "w     p             ww w",
                     "w wwwwwwwww wwwwwww ww w",
@@ -189,4 +189,7 @@ const map_list = {
     plat : 1
 };
 
-window.map_list = map_list;
+//set session storage only if map_list dosent exist
+if (!sessionStorage.getItem("map_list")) {
+    sessionStorage.setItem("map_list", JSON.stringify(map_list));
+}

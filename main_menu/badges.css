@@ -1,0 +1,72 @@
+body{
+    margin:0;
+    background:#0b1320;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    color:white;
+}
+.container{
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+}
+h2{
+    margin:40px 0 10px;
+    font-size:18px;
+}
+#return{
+    top: 0;
+    left: 0;
+    height: 2rem;
+
+    position: fixed;
+}
+/* cert and referral */
+.rewards_box{
+    border:2px solid rgba(255,255,255,0.15);
+    padding:30px;
+    background:rgba(255,255,255,0.03);
+}
+.rewards_box p{
+    margin-bottom:25px;
+    font-size:15px;
+}
+/* Buttons */
+.button_group{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+.btn{
+    padding:12px 20px;
+    background:transparent;
+    border:2px solid rgba(255,255,255,0.2);
+    color:white;
+    cursor:pointer;
+    font-family: monospace;
+}
+.btn:hover{
+    background:rgba(255,255,255,0.08);
+}
+
+/* row layout */
+.badge_row{
+    margin-bottom:20px;
+    padding:20px;
+
+    display:flex;
+    align-items:center;
+    border:2px solid rgba(255,255,255,0.15);
+    background:rgba(255,255,255,0.03);
+}
+.badge_row img{
+    width:120px;
+    height:120px;
+    margin-right:30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.badge_text{
+    font-size:16px;
+}

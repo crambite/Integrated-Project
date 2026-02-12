@@ -27,7 +27,8 @@ window.board_width = board_width
 
 //map
 const map_id = sessionStorage.getItem("map");
-const map = window.map_list[map_id];
+const map_list = JSON.parse(sessionStorage.getItem("map_list"));
+const map = map_list[map_id];
 window.current_map = map
 
 //intersections
@@ -221,8 +222,8 @@ function win() {
     win.style.opacity = 1;
 
     //display badge requirements
-    silver_req.textContent = `Complete the map in ${window.map_list[map_id + "_silver"]} turns or less.`;
-    gold_req.textContent = `Complete the map in ${window.map_list[map_id + "_gold"]} turns or less.`;
+    silver_req.textContent = `Complete the map in ${map_list[map_id + "_silver"]} turns or less.`;
+    gold_req.textContent = `Complete the map in ${map_list[map_id + "_gold"]} turns or less.`;
 
     
     //wait for patch to be applied
@@ -250,17 +251,17 @@ function win() {
     bronze.src = "./assets/badges/bronze.png";
 
     //determine the player badge and display the image of the badge, and badge requirements on the win screen
-    if (turns === window.map_list.plat) {
+    if (turns === map_list.plat) {
         data[map_id + "_plat"] = true;
 
         plat.src = "./assets/badges/plat.png";
     }
-    if (turns <= window.map_list[map_id + "_gold"]) {
+    if (turns <= map_list[map_id + "_gold"]) {
         data[map_id + "_gold"] = true;
 
         gold.src = "./assets/badges/gold.png";
     }
-    if (turns <= window.map_list[map_id + "_silver"]) {
+    if (turns <= map_list[map_id + "_silver"]) {
         data[map_id + "_silver"] = true;
 
         silver.src = "./assets/badges/silver.png";
