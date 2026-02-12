@@ -360,20 +360,14 @@ body::after{
 
 /* shared select */
 .select{
-  width: 100%;
-  height: 40px;
-  padding: 0 12px;
+  background-color: rgba(18, 26, 36, 0.8);
+  color: white;
 
+  border: 1px solid rgba(180,220,255,0.25);
   border-radius: 10px;
-  border: 1px solid var(--ctrlStroke);
-  background: linear-gradient(180deg, var(--ctrlA), var(--ctrlB));
 
-  color: var(--text);
-  outline: none;
+  padding: 6px 10px;
 
-  box-shadow:
-    0 10px 24px rgba(0,0,0,0.20),
-    0 0 0 1px rgba(0,0,0,0.35) inset;
 }
 
 .select:focus{
