@@ -97,22 +97,22 @@ if (reviewsCarousel) {
 // -------------------------
 const updates = [
   {
-    date: "Apr 23, 2025",
+    date: "Feb 15, 2026",
     title: "Friend Referral Program",
     text: "We launched a referral flow that lets creators reward players for inviting friends to their experience.",
   },
   {
-    date: "May 11, 2025",
+    date: "May 11, 2026",
     title: "New Level Builder Tools",
     text: "Creators can now prototype puzzle layouts faster with snap-to-grid placement and test runs.",
   },
   {
-    date: "Jun 02, 2025",
+    date: "Jun 02, 2026",
     title: "Progress Saving Improvements",
     text: "Smoother checkpoints and clearer completion states across maps—less friction, more play.",
   },
   {
-    date: "Jul 18, 2025",
+    date: "Jul 18, 2026",
     title: "Classroom Analytics (Beta)",
     text: "Teachers can view completion trends and where learners get stuck—without distracting the player.",
   },
