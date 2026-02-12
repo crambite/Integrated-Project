@@ -2,6 +2,8 @@ import { Obj } from "./entities/obj.js";
 import { player_controller } from "./controls/player_controls.js"
 import { patch_player_data } from "../player_data/auth.js"
 
+const data = JSON.parse(sessionStorage.getItem("data"));
+
 //loading
 const loading = document.getElementById("loading")
 setTimeout(() => {
@@ -128,7 +130,9 @@ exit_image.src = "assets/map/exit.png"
 
 //sounds
 const lazer_sound = new Audio("./assets/sounds/lazer.mp3")
+lazer_sound.volume = data.volume;
 const walk_sound = new Audio("./assets/sounds/walk.mp3")
+walk_sound.volume = data.volume
 
 function use(drone) {
     if (drone === "Kill") {
@@ -242,8 +246,6 @@ function win() {
     });
 
     //update player data to mark map as completed
-    let data = JSON.parse(sessionStorage.getItem("data"));
-
     //set map state to cleared
     data[map_id] = true;
 

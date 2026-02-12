@@ -1,14 +1,29 @@
 let intervalID = null;
-const map = sessionStorage.getItem("map")
+const map = sessionStorage.getItem("map");
+
+const data = JSON.parse(sessionStorage.getItem("data"));
+
+//speed
+let speed;
+if (data.text_speed === "Slow") {
+    speed = 100
+}
+else if(data.text_speed === "Normal") {
+    speed = 75
+}
+else {
+    speed = 50
+}
 
 //loading
-const loading = document.getElementById("loading")
+const loading = document.getElementById("loading");
 setTimeout(() => {
     loading.style.top = -1000 + "px"
 }, 3000)
 
 //sound
 const sound = new Audio("./assets/vn_audio.wav");
+sound.volume = data.volume;
 
 let textIndex = 0;
 let textingEnded = false;
@@ -44,7 +59,7 @@ function printText(targetText) {
             textingEnded = true;
             textIndex++; // move to next line in the list
         }
-    }, 50);
+    }, speed);
 }
 
 function skipText() {

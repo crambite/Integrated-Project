@@ -4,7 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Settings • Blackbox Protocol</title>
-  <link rel="stylesheet" href="menu.css">
+
+  <link rel="stylesheet" href="../menu.css">
+
+  <script src="../../global_settings.js"></script>
+  <script src="settings.js" defer></script>
 </head>
 
 <body>
@@ -25,27 +29,26 @@
         <div class="row">
           <div class="row-label">Volume</div>
           <div class="row-control">
-            <input class="range" type="range" min="0" max="100" value="80" />
-            <span class="value">80</span>
+            <input class="range" id="volume_range" type="range" min="0" max="100" value="100" />
+            <span class="value" id="volume_value">100</span>
           </div>
         </div>
 
         <div class="row">
           <div class="row-label">Brightness</div>
           <div class="row-control">
-            <input class="range" type="range" min="0" max="100" value="65" />
-            <span class="value">65</span>
+            <input class="range" id="brightness_range" type="range" min="25" max="100" value="100" />
+            <span class="value" id="brightness_value">100</span>
           </div>
         </div>
 
         <div class="row">
           <div class="row-label">Text Speed</div>
           <div class="row-control">
-            <select class="select">
+            <select class="select" id="select">
               <option>Slow</option>
-              <option selected>Normal</option>
+              <option>Normal</option>
               <option>Fast</option>
-              <option>Instant</option>
             </select>
           </div>
         </div>
@@ -54,11 +57,11 @@
 
       <!-- Footer -->
       <div class="footer">
-        <button class="ghost-btn" type="button">Back</button><!-- Daven figure out how to link this back -->
+        <button class="ghost-btn" type="button" onclick="location.href='../menu.html'">Back</button>
 
         <div class="right">
-          <button class="ghost-btn" type="button">Cancel</button>
-          <button class="primary-btn" type="button">Save</button>
+          <button class="ghost-btn" id="logout" type="button">Logout</button>
+          <button class="primary-btn" id="save" type="button">Save</button>
         </div>
       </div>
 

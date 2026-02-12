@@ -132,7 +132,7 @@ const map_list = JSON.parse(sessionStorage.getItem("map_list"));
 function bronze(img, txt) {
     //check if the badge has been accquired
     if (data[img.id.replace("_bronze", "")] === true) {
-        img.src = "./assets/bronze.png";
+        img.src = "../assets/bronze.png";
     }
 
     txt.textContent = "Complete the map.";
@@ -142,7 +142,7 @@ function bronze(img, txt) {
 function silver(img, txt) {
     //check if the badge has been accquired
     if (data[img.id] === true) {
-        img.src = "./assets/silver.png";
+        img.src = "../assets/silver.png";
     }
 
     txt.textContent = `Complete the map in ${map_list[img.id]} turns or less.`;
@@ -152,7 +152,7 @@ function silver(img, txt) {
 function gold(img, txt) {
     //check if the badge has been accquired
     if (data[img.id] === true) {
-        img.src = "./assets/gold.png";
+        img.src = "../assets/gold.png";
     }
 
     txt.textContent = `Complete the map in ${map_list[img.id]} turns or less.`;
@@ -162,7 +162,7 @@ function gold(img, txt) {
 function plat(img, txt) {
     //check if the badge has been accquired
     if (data[img.id] === true) {
-        img.src = "./assets/plat.png";
+        img.src = "../assets/plat.png";
     }
 
     txt.textContent = "Complete the map in 1 turn.";

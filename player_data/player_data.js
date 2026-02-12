@@ -51,7 +51,12 @@ let player_data = {
 
     //cutscene played
     open : false,
-    end : false
+    end : false,
+
+    //setting
+    volume : 100,
+    brightness : 50,
+    text_speed : "Normal"
 }
 
 
