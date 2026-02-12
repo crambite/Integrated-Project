@@ -57,7 +57,7 @@ let player_data = {
     end : false,
 
     //setting
-    volume : 100,
+    volume : 1,
     brightness : 50,
     text_speed : "Normal"
 }
