@@ -5,7 +5,7 @@ body{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: rgb(22, 22, 22);
+	background-color: rgb(0, 0, 0);
 
 	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 }
@@ -14,9 +14,18 @@ body{
 	left: 0;
 	margin: 10px;
 	width: 2.5rem;
-	height: 2rem;
+	height: 2.5rem;
 	z-index: 999;
+	border-radius: 16px;
 
+	border: 1px solid rgba(255,255,255,0.12);
+	background: rgba(10, 14, 22, 0.65);
+	color: rgba(255,255,255,0.75);
+
+	cursor: pointer;
+	box-shadow:
+		0 10px 24px rgba(0,0,0,0.45),
+		inset 0 0 0 1px rgba(0,0,0,0.35);
 	position: fixed;
 }
 /* next act button */
@@ -33,18 +42,35 @@ body{
 }
 #next_act_box{
 	width: 10vw;
-	min-width: 3rem;
-	height: 3vw;
-	min-height: 2rem;
-	border-radius: 50px;
+	min-width: 3.2rem;
+	height: 3.4vw;
+	min-height: 2.6rem;
 
-	border: 3px solid rgb(255, 30, 30);
-	background: rgb(8, 9, 110);
-	box-shadow:  inset 0 0 1rem rgb(12, 71, 197);
+	border-radius: 18px;
+	box-sizing: border-box;
+
+	border: 3px solid rgba(174, 250, 255, 0.345);
+	background:
+		radial-gradient(120% 140% at 50% 0%,
+		rgba(120,190,255,0.14),
+		transparent 55%),
+		rgba(10, 14, 22, 0.65);
+
+	box-shadow:
+		0 10px 24px rgba(0,0,0,0.45),
+		inset 0 0 0 1px rgba(0,0,0,0.35),
+		inset 0 0 18px rgba(120,190,255,0.10);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	cursor: pointer;
+	transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 #next_act_box:hover{
 	transform: scale(1.2);
-	box-shadow: 0 0 1rem rgba(255, 43, 43, 0.7);
+	box-shadow: 0 0 1rem rgba(43, 202, 255, 0.7);
 }
 #next_act_img{
 	height: 100%;
@@ -102,6 +128,8 @@ body{
 	align-items: center;
 	transform: translate(-50%, -50%); /* makes the maps stay in place even when scaled down */
 }
+
+/*Weird red circles*/
 .map{
 	width: 3vw;
 	min-width: 2rem;
@@ -110,27 +138,66 @@ body{
 	border-radius: 50%;
 
 	border: 3px solid rgb(255, 30, 30);
-	background: rgb(8, 9, 110);
-	box-shadow:  inset 0 0 1rem rgb(12, 71, 197);
-	box-sizing: border-box;
+	border-radius: 50%;
+
+	background:
+		radial-gradient(circle at 30% 30%,
+		rgba(255,120,120,0.9),
+		rgba(180,0,0,0.9) 40%,
+		rgba(0,0,0,0.95) 75%
+    );
+
+	border: 2px solid rgba(255,0,0,0.6);
+
+	box-shadow:
+		0 0 25px rgba(255,0,0,0.6),
+		inset -10px -15px 25px rgba(0,0,0,0.9);
+
+	transition: transform 0.2s ease;
+		box-sizing: border-box;
 }
 .map:hover{
 	transform: scale(1.2);
-	box-shadow: 0 0 1rem rgba(255, 43, 43, 0.7);
+	background:
+		radial-gradient(circle at 30% 30%,
+		rgba(255,120,120,0.9),
+		rgba(180,0,0,0.9) 40%,
+		rgba(68, 0, 0, 0.95) 75%
+    );
 }
 /* if map is completed */
 .map.completed{
-	border: 3px solid rgb(30, 255, 30);
+	background:
+		radial-gradient(circle at 30% 30%,
+		rgba(132, 255, 249, 0.9),
+		rgba(0, 165, 180, 0.9) 40%,
+		rgba(0,0,0,0.95) 75%
+    );
+	box-shadow:
+		0 0 25px rgba(0, 255, 247, 0.6),
+		inset -10px -15px 25px rgba(0,0,0,0.9);
+	border: 1px solid rgb(58, 219, 255);
 }
-.map.completed:hover{
-	box-shadow: 0 0 1rem rgba(43, 255, 43, 0.7);;
-}
+
 .map_name{
 	font-size: clamp(1rem, 5vh, 2rem);
 	opacity: 0;
+	border-radius: 14px;
+	color:white;
+	padding: 7px 14px;
 
-	color: rgb(255, 255, 255);
-	background-color: rgb(0, 0, 0);
+	border-radius: 40px;
+
+	background: rgba(10, 20, 40, 0.85);
+	border: 1px solid rgba(120,160,255,0.3);
+
+	color: rgba(255,255,255,0.85);
+	letter-spacing: 0.25em;
+	font-size: 22px;
+
+	box-shadow:
+		0 0 20px rgba(0,0,0,0.5),
+		inset 0 0 15px rgba(0,0,0,0.6);
 }
 /* confirm map screen */
 #confirm_map{
@@ -146,17 +213,37 @@ body{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: rgb(22, 22, 22);
-	color: rgb(255, 255, 255);
+	
+	background:
+		radial-gradient(120% 90% at 50% 0%, rgba(120,190,255,0.18), transparent 55%),
+		radial-gradient(120% 90% at 50% 100%, rgba(80,120,255,0.10), transparent 60%),
+		rgba(10, 14, 22, 0.90);	border-radius: 28px;
+
+	backdrop-filter: blur(8px);
 	transform: translate(-50%, -50%); /* allows me to centre it without any calculations */
 }
 #close{
-	top: 0;
-	right: 0;
+	top: 10px;
+	right: 10px;
 
 	position: absolute;
+
+
+	width: 50px;
+	height: 50px;
+	border-radius: 16px;
+
+	border: 1px solid rgba(255,255,255,0.12);
+	background: rgba(10, 14, 22, 0.65);
+	color: rgba(255,255,255,0.75);
+
+	cursor: pointer;
+	box-shadow:
+		0 10px 24px rgba(0,0,0,0.45),
+		inset 0 0 0 1px rgba(0,0,0,0.35);
 }
 #map_name_cfm{
+	color: white;
 	font-size: 5vh;
 }
 .drone{
@@ -171,37 +258,51 @@ body{
 	border: 3px solid rgba(13, 52, 143, 0.14);
 }
 .drone:hover{
-	transform: scale(1.2);
-	box-shadow: 0 0 1rem rgba(255, 43, 43, 0.7);
+	transform: scale(1.1);
+	box-shadow: 0 0 1rem rgba(127, 232, 255, 0.7);
 }
 .drone img{
-	margin: 2px;
+	margin: 10px;
 	width: 7vw;
-	min-width: 2rem;
 	height: 7vw;
-	min-height: 2rem;
 }
 .description{
+	color: white;
 	font-size: 2vh;
 }
 
 /* enter button */
 #enter{
-	margin-top: 20px;
-	width: 50%;
-	height: 10%;
-	border-radius: 20px;
+	margin-top: 18px;
 	
+	width: min(640px, 90%);
+	height: 74px;
+
+	border-radius: 22px;
+	border: 1px solid rgba(255, 80, 110, 0.38);
+
+	background:
+		radial-gradient(120% 140% at 50% 0%, rgba(255, 60, 90, 0.25), transparent 55%),
+		rgba(60, 10, 20, 0.65);
+
+	box-shadow:
+		0 18px 50px rgba(0,0,0,0.50),
+		inset 0 0 0 1px rgba(0,0,0,0.35);
+
 	display: flex;
-	align-items: center;
 	justify-content: center;
-	background-color: rgb(8, 9, 110);
+	align-items: center;
+
+	cursor: pointer;
 }
-#enter:hover{
-	transform: scale(1.2);
-	box-shadow: 0 0 1rem rgba(255, 43, 43, 0.7);
-}
+
 #enter p{
-	margin: 0;
-	font-size: 5vh;
+  margin: 0;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.35em;
+  font-size: 30px;
+  text-transform: uppercase;
 }
+
+#enter:hover{ transform: scale(1.01); }
+#enter:active{ transform: scale(0.99); }

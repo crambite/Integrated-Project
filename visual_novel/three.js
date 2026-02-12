@@ -8,6 +8,7 @@ let h = window.innerHeight;
 const scene = new THREE.Scene();
 const data = JSON.parse(sessionStorage.getItem("data"));
 let model = "./assets/Small.glb";
+let position = 1;
 
 //decide which model to use
 let count = 0;
@@ -33,15 +34,20 @@ if (data["Australia"] === true) {
 }
 
 if (count >= 2) {
+  position = 2;
   model = "./assets/Small+legs.glb";
 }
 
 if (count >= 4) {
   model = "./assets/Small+armslegs.glb";
+  position = 2;
+
 }
 
 if (data["North_America"] === true && data["South_America"] === true && data["Asia"] === true && data["Africa"] === true && data["Australia"] === true) {
   model = "./assets/Big.glb";
+  position = 2;
+
 }
 
 if (w<h){
@@ -64,7 +70,7 @@ const gltfLoader = new GLTFLoader();
 gltfLoader.load(model, (gltf) =>{
   const robot = gltf.scene;
 
-  robot.position.set(0,-2 ,0);
+  robot.position.set(0, -position ,0);
   scene.add(robot);
 })
 

@@ -24,15 +24,23 @@
     justify-content: space-between;
 }
 .run{
-    height: 2rem;
+    height: 25px;
+    background-color: red;
+    width: 50px;
+    color: white;
+    border: 0;
 }
 .window_controls{
     display: flex;
     flex-direction: row;
 }
 .minimise, .maximise{
+    background-color: rgb(0, 169, 0);
+    color: white;
+    border: 0;
+    margin-left: 10px;
     width: 2rem;
-    height: 2rem;
+    height: 25px;
 }
 .code{  
     flex: 1; /* let the text area fill up any available space */

@@ -67,7 +67,7 @@ for (let drone of drones) {
         }
 
         //highlight current selected drone
-        drone.style.border = "3px solid rgb(105, 20, 20)";
+        drone.style.border = "3px solid rgb(162, 241, 255)";
 
         sessionStorage.setItem("drone", drone_name);
     })
