@@ -235,10 +235,15 @@ function win() {
         //go to vn screen
         next.addEventListener("click", () => {
             //go to final animation if final map
-            if (data["Familiar_Scene"] === true && data["end"] === false) {
+            if (sessionStorage.getItem("map") === "Familiar_Scene" && data["end"] === false) {
                 window.location.href = "../cutscenes/ending.html";
 
                 return;
+            }
+            else if (sessionStorage.getItem("map") === "Familiar_Scene") {
+                window.location.href = "../main_menu/badges/badges.html";
+
+                return
             }
 
             window.location.href = "../visual_novel/visual_novel.html";
