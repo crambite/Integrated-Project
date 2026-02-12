@@ -15,7 +15,7 @@ const data = JSON.parse(sessionStorage.getItem("data"));
 let logged_in = true;
 
 if (!sessionStorage.getItem("player_id")) {
-    logout.textContent = "register"
+    logout.textContent = "Register/Login"
 
     logged_in = false;
 }

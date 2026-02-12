@@ -1,0 +1,27 @@
+<!-- THIS WILL BE THE CERTIFICATE-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Certificate</title>
+
+    <link rel="stylesheet" href="certificate.css"></link>
+
+    <!-- html2pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="certificate.js" defer></script>
+</head>
+<body>
+
+    <div id="cert">
+        <h1 id="type">CERTIFICATE OF COMPLETION</h1>
+        <div id="name">Username</div>
+        <div id="details">Has completed Blackbox Protocol</div>
+    </div>
+
+    <div id="nav">
+        <button onclick="location.href='../main_menu/badges/badges.html'">←</button>
+        <button onclick="downloadPDF()">Download PDF</button>
+    </div>
+</body>
+</html>

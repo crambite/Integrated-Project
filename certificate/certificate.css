@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    height: 100vh;
+
+    background: #0b0f14;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* A4 Landscape Size */
+#cert{
+    width: 297mm;
+    height: 210mm;
+    background: rgb(184, 115, 51);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 3mm solid rgba(180,220,255,0.6);
+    box-sizing: border-box;
+}
+
+h1{
+    font-size: 18mm;
+    margin: 0;
+    letter-spacing: 2mm;
+}
+
+#name{
+    margin-top: 15mm;
+    font-size: 22mm;
+
+    font-weight: bold;
+}
+
+#details{
+    margin-top: 8mm;
+    font-size: 6mm;
+    opacity: 0.8;
+}
+#nav{
+    margin: 10px;
+    top: 0;
+    left: 0;
+
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+}
+button{
+    margin: 10px;
+    font-size: 16px;
+
+    cursor: pointer;
+}

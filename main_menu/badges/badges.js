@@ -131,8 +131,21 @@ const data = JSON.parse(sessionStorage.getItem("data"));
 //map_data
 const map_list = JSON.parse(sessionStorage.getItem("map_list"));
 
+//collect cert
+if (!sessionStorage.getItem("player_id")) {
+    collect.textContent = "Login to continue";
+}
+else {
+    collect.addEventListener("click", () => {
+        window.location.href = "../../certificate/certificate.html"
+    })
+}
+
 //referral code
-if (data["Familiar_Scene"] !== true) {
+if (!sessionStorage.getItem("player_id")) {
+    refer.textContent = "Login to continue";
+}
+else if (data["Familiar_Scene"] !== true) {
     refer.textContent = "Complete the game";
 }
 else if (!data.code) {
