@@ -43,12 +43,32 @@ let pyodideReadyPromise = main();
 async function evaluatePython() {
     const pyodide = await pyodideReadyPromise;
 
-    pyodide.runPython(`
+    try {
+        // Redirect stdout
+        pyodide.runPython(`
         import sys
         from io import StringIO
         sys.stdout = StringIO()
-    `);
+        `);
 
-    const code = aceEditor.getValue(); // get code from Ace editor
-    pyodide.runPython(code);
+        const code = aceEditor.getValue();
+
+        pyodide.runPython(code);
+
+        // Get printed output
+        let output = pyodide.runPython("sys.stdout.getvalue()");
+        
+        output = output.trimEnd();
+        
+        window.player_controls.print(output)
+    } 
+    catch (err) {
+        let output = err.toString();
+
+        output = output.trimEnd();
+
+        window.player_controls.print(output)
+    }
+
+    
 }

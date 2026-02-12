@@ -392,6 +392,10 @@ function player_turn() {
 
         player.shoot(enemies);
     }
+    else if(typeof instruction === "string") {
+        //print
+        display(instruction)
+    }
 
     //clear fow
     fow = player.clear_fow(fow);

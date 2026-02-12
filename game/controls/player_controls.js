@@ -36,6 +36,11 @@ export function player_controller(queue, ghost) {
         queue.push("shoot");
     }
 
+    //print
+    function print(output) {
+        queue.push(output)
+    }
+
     //return as an object to store in variable
-    return{up, down, left, right, shoot};
+    return{up, down, left, right, shoot, print};
 };
