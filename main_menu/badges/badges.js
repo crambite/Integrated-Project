@@ -121,12 +121,37 @@ const Familiar_Scene_gold_txt = document.getElementById("Familiar_Scene_gold_txt
 const Familiar_Scene_plat = document.getElementById("Familiar_Scene_plat");
 const Familiar_Scene_plat_txt = document.getElementById("Familiar_Scene_plat_txt");
 
+//refer and collect
+const refer = document.getElementById("refer");
+const collect = document.getElementById("collect");
 
 //player data
 const data = JSON.parse(sessionStorage.getItem("data"));
 
 //map_data
 const map_list = JSON.parse(sessionStorage.getItem("map_list"));
+
+//referral code
+if (data["Familiar_Scene"] !== true) {
+    refer.textContent = "Complete the game";
+}
+else if (!data.code) {
+    //random code generator
+    let text = "";
+    let random;
+    for (let i = 0; i < 6; i++) {
+        random = Math.floor(Math.random() * 10);
+        text += random;
+    }
+    refer.textContent = text;
+
+    data.code = text;
+
+    sessionStorage.setItem("data", JSON.stringify(data));
+}
+else {
+    refer.textContent = data.code;
+}
 
 //update the bronze badges
 function bronze(img, txt) {

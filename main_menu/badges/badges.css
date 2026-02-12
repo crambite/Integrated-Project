@@ -161,7 +161,7 @@ h2{
     flex-wrap: wrap;
 }
 
-.btn{
+.misc{
     appearance: none;
     border: 1px solid var(--btnStroke);
     background: rgba(10,14,20,0.20);
@@ -183,13 +183,13 @@ h2{
     transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
 }
 
-.btn:hover{
+#collect:hover{
     transform: translateY(-1px);
     background: rgba(14,22,34,0.40);
     border-color: rgba(180,220,255,0.40);
 }
 
-.btn:active{
+#collect:active{
     transform: translateY(0px);
 }
 

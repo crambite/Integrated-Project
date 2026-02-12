@@ -4,6 +4,9 @@ let player_data = {
     phone_number : "",
     password : "",
 
+    //referral code
+    code : "",
+
     //map completion status
     The_Room : false,
     Enemies : false,

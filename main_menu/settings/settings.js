@@ -11,11 +11,11 @@ const logout = document.getElementById("logout")
 
 const data = JSON.parse(sessionStorage.getItem("data"));
 
-//decide if its logout or login
+//decide if its logout or register
 let logged_in = true;
 
 if (!sessionStorage.getItem("player_id")) {
-    logout.textContent = "login"
+    logout.textContent = "register"
 
     logged_in = false;
 }
