@@ -2,7 +2,10 @@ const boundary = document.getElementById("game_console");
 const help_btn = document.getElementById("help");
 const help_menu = document.getElementById("help_menu");
 const help_close = document.getElementById("help_close");
+const guide = document.getElementById("robot_text");
 const map = document.getElementById("map");
+
+const data = JSON.parse(sessionStorage.getItem("data"));
 
 let open = false;
 
@@ -52,6 +55,16 @@ help_close.addEventListener("click", () => {
     open = false;
 });
 
+//guide
+if (data["The_Room"] === false) {
+    guide.textContent = "You can use up(), down(), left(), right() to move by typing them into your text editor. You can also use is_intersection() and is_dead_end() as checks. For more help, click the ? icon.";
+}
+else if (data["Enemies"] === false) {
+    guide.textContent = "You can use shoot() to kill an enemy within 2 tiles, even through walls! For more help, click the ? icon.";
+}
+else {
+    guide.textContent = "Good luck! For more help, click the ? icon.";
+}
 
 function enableScroll() {
     document.body.style.overflowY = "visible";
