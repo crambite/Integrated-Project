@@ -116,7 +116,7 @@ body::after{
 }
 
 .label{
-    font-size: 13px;
+    font-size: 16px;
     color: var(--muted);
 }
 
@@ -191,5 +191,78 @@ body::after{
 .links:hover{
     text-decoration: underline;
     text-underline-offset: 4px;
+}
+
+/* =========================
+   Mobile LANDSCAPE view
+   Targets: short height + landscape orientation
+   ========================= */
+@media (max-height: 520px) and (orientation: landscape){
+
+  /* allow scrolling for short screens */
+  body{
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  /* keep background fixed while content scrolls */
+  body::before,
+  body::after{
+    position: fixed;
+  }
+
+  .screen{
+    padding: 12px;
+    place-items: start center;
+  }
+
+  .panel{
+    width: min(920px, 96vw);
+    padding: 18px 18px;
+    border-radius: 14px;
+  }
+
+  .header{
+    margin-bottom: 10px;
+    gap: 4px;
+  }
+
+  .title{
+    font-size: 26px;   /* stable size, not vh */
+    line-height: 1.1;
+  }
+
+  .subtitle{
+    font-size: 12px;
+  }
+
+  /* make form tighter */
+  .form{
+    width: 100%;
+    max-width: 860px;
+    gap: 10px;
+  }
+
+  .label{
+    font-size: 12px;
+  }
+
+  .input{
+    height: 40px;      /* smaller for landscape */
+    font-size: 14px;
+    padding: 0 12px;
+  }
+
+  .primary-btn{
+    height: 40px;
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  .links{
+    justify-content: center;
+    font-size: 12px;
+    margin-top: 6px;
+  }
 }
 
