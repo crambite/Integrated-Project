@@ -197,17 +197,6 @@ body{
     overflow-x: auto;
 }
 
-/* settings */
-#settings_menu{
-    width: 30vw;
-    min-width: 20rem; /* prevent settings from apeparing too small */
-    height: 60vh;   
-    z-index: 999; /* should appear over everything */ 
-    top: -1000px;
-
-    background-color: rgb(22, 22, 22);
-    position: fixed;
-}
 /* close button */
 .close{
     right: 0;

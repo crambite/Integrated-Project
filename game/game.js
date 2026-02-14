@@ -13,6 +13,9 @@ setTimeout(() => {
 //run button
 const run = document.querySelector(".run")
 
+//reset button
+const reset_btn = document.getElementById("reset")
+
 //message display
 const message = document.getElementById("message")
 const message_content = document.getElementById("message_content")
@@ -341,12 +344,22 @@ function player_turn() {
     if (queue.length === 0) {
         turns += 1;
 
-        //start enemy turn
-        display("enemy turn");
-
+        //stop player turn
         clearInterval(interval);
         interval = null;
-        interval = setInterval(() => {enemy_turn(2)}, 500);
+
+        //dosent start enemy turn if there are no enemies
+        if (!enemies || enemies.size === 0) {
+            //player turn display
+            display(`Turn: ${turns}`);
+
+            return;
+        }
+
+        //start enemy turn
+        display("Enemy Turn");
+
+        interval = setInterval(() => {enemy_turn(2)}, 500); 
 
         return;
     }
@@ -453,11 +466,12 @@ function enemy_turn(steps) {
 
     //stops moving the enemy when it has moved its specified number of steps and brings it back to the player's turn
     if (count === steps) {
-        display(`turn: ${turns}`);
-
         //reset count for next use
         count = 0;
         
+        //player turn display
+        display(`Turn: ${turns}`);
+
         //stop updating the game until the next time player presses run
         clearInterval(interval);
         interval = null;
@@ -571,4 +585,10 @@ run.addEventListener("click", () => {
     evaluatePython()
 
     interval = setInterval(player_turn, 500);
+});
+
+//reset level
+reset_btn.addEventListener("click", () => {
+    reset();
+    display("Reset Successful");
 });
