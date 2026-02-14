@@ -78,3 +78,17 @@ settings_close.addEventListener("click", () => {
 
     open = false;
 });
+
+
+function enableScroll() {
+    document.body.style.overflowY = "visible";
+}
+
+window.enableScroll = enableScroll;
+
+
+function disableScroll() {
+    document.body.style.overflowY = "hidden";
+}
+
+window.disableScroll = disableScroll;

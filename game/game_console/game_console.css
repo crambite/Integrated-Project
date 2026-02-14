@@ -24,7 +24,6 @@
 
 /* win screen */
 #win_screen{
-    padding-bottom: 12px;
     width: 30vw;
     min-width: 20rem; /* prevent win screen from apeparing too small */
     z-index: 999; /* should appear over everything */ 
@@ -36,6 +35,7 @@
     flex-direction: column;
     align-items: center;
     position: fixed;
+    top: 50vh;
     transform: translate(-50%, -50%); /* so that it can be centred */
     background:
 		radial-gradient(120% 90% at 50% 0%, rgba(120,190,255,0.18), transparent 55%),
@@ -59,9 +59,7 @@
 .badges img{
     margin: 3px;
 	width: 7vw;
-	min-width: 2rem;
 	height: 7vw;
-	min-height: 2rem;
 }
 .badges p{
     font-size: 2vh;
