@@ -72,6 +72,7 @@ gltfLoader.load(model, (gltf) =>{
 
   robot.position.set(0, -position ,0);
   scene.add(robot);
+  window.dispatchEvent(new Event("loaded"));
 }, onload) //daven loading is on the onload
 
 

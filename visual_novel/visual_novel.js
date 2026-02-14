@@ -3,6 +3,15 @@ const map = sessionStorage.getItem("map");
 
 const data = JSON.parse(sessionStorage.getItem("data"));
 
+//sound
+const sound = new Audio("./assets/vn_audio.wav");
+sound.volume = data.volume;
+
+//vn
+let textIndex = 0;
+let textingEnded = false;
+let textLists;
+
 //speed
 let speed;
 if (data.text_speed === "Slow") {
@@ -17,19 +26,17 @@ else {
 
 //loading
 const loading = document.getElementById("loading");
-setTimeout(() => {
+
+//wait for load
+window.addEventListener("loaded", () => {
     loading.style.top = -1000 + "px"
-}, 3000)
 
-//sound
-const sound = new Audio("./assets/vn_audio.wav");
-sound.volume = data.volume;
+    textLists = window.visual_novel_text[map];
 
-let textIndex = 0;
-let textingEnded = false;
+    printText(textLists[textIndex]);
+})
 
-let textLists;
-textLists = window.visual_novel_text[map];
+
 
 const block_element = document.getElementById("story_text");
 
@@ -51,7 +58,7 @@ function printText(targetText) {
 
         if (currentLen < targetLength) {
             block_element.textContent = targetText.slice(0, currentLen + 1);
-            sound.play()
+            sound.play();
         } 
         else {
             clearInterval(intervalID);
@@ -86,10 +93,3 @@ function skipText() {
     textIndex++; // increment ONLY after we finish current line
 }
 
-printText(textLists[textIndex]);
-
-// start
-/* window.addEventListener("click", () => {
-    sound.play().catch(() => {}); // unlock audio
-    printText(textLists[textIndex]);
-}, { once: true }); */
