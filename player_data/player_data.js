@@ -7,6 +7,10 @@ let player_data = {
     //referral code
     code : "",
 
+    //voucher redemption
+    voucher : false,
+    referral : false,
+
     //map completion status
     The_Room : false,
     Enemies : false,

@@ -123,6 +123,7 @@ const Familiar_Scene_plat_txt = document.getElementById("Familiar_Scene_plat_txt
 
 //refer and collect
 const refer = document.getElementById("refer");
+const redeem = document.getElementById("redeem");
 const collect = document.getElementById("collect");
 
 //player data
@@ -131,24 +132,16 @@ const data = JSON.parse(sessionStorage.getItem("data"));
 //map_data
 const map_list = JSON.parse(sessionStorage.getItem("map_list"));
 
-//collect cert
-if (!sessionStorage.getItem("player_id")) {
-    collect.textContent = "Login to continue";
-}
-else {
-    collect.addEventListener("click", () => {
-        window.location.href = "../../certificate/certificate.html"
-    })
+//voucher
+if (sessionStorage.getItem("player_id") && data["Familiar_Scene"] === true && data.voucher === false) {
+    alert("$20 Starbucks Voucher Sent To Your Phone Number");
+
+    data.voucher = true;
+    sessionStorage.setItem("data", JSON.stringify(data));
 }
 
-//referral code
-if (!sessionStorage.getItem("player_id")) {
-    refer.textContent = "Login to continue";
-}
-else if (data["Familiar_Scene"] !== true) {
-    refer.textContent = "Complete the game";
-}
-else if (!data.code) {
+//if player dosent have a referral code
+if (!data.code) {
     //random code generator
     let text = "";
     let random;
@@ -162,8 +155,49 @@ else if (!data.code) {
 
     sessionStorage.setItem("data", JSON.stringify(data));
 }
+
+//if player redeemed the referral
+if (data.referral === true) {
+    redeem.placeholder = "Redeemed";
+    redeem.disabled = true;
+}
+
+//check whether requirements of certificates and referrals have been met
+if (!sessionStorage.getItem("player_id")) {
+    collect.textContent = "Login to collect";
+
+    refer.textContent = "Login to view";
+
+    redeem.placeholder = "Login to enter"
+    redeem.disabled = true;
+}
+else if (data["Familiar_Scene"] === false) {
+    collect.textContent = "Complete the game";
+
+    refer.textContent = "Complete the game";
+
+    redeem.placeholder = "Complete the game";
+    redeem.disabled = true;
+}
 else {
+    collect.addEventListener("click", () => {
+        window.location.href = "../../certificate/certificate.html";
+    })
+
     refer.textContent = data.code;
+
+    redeem.addEventListener("input", () => {
+        if (/^\d{6}$/.test(redeem.value)) {
+            alert("$5 Starbucks Voucher Sent To Your Phone Number");
+
+            //disable the player from colelcting more than once
+            redeem.placeholder = "Redeemed";
+            redeem.disabled = true;
+
+            data.referral = true;
+            sessionStorage.setItem("data", JSON.stringify(data));
+        }
+    });
 }
 
 //update the bronze badges
