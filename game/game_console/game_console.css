@@ -22,6 +22,123 @@
     background-color: rgb(22, 22, 22);
 }
 
+/* nav bar */
+#nav {
+    height: 3rem;
+
+    display: flex;
+    align-items: center;
+    background-color: rgb(8, 13, 22);
+}
+#return{
+    margin: 10px;
+
+    margin-right: auto; /* stick to left */
+}
+
+#map{
+    text-align: center;
+    font-size: 4vh;
+}
+#misc{
+    margin: 10px; 
+    gap: 0.5rem;
+
+    margin-left: auto; /* stick to right */
+    display: flex; 
+    
+}
+#nav button{
+    width: 2.5rem;
+    height: 2.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    box-sizing: border-box;
+    
+	border-radius: 10px;
+
+	border: 1px solid rgba(255,255,255,0.12);
+	background: rgba(10, 14, 22, 0.65);
+	color: rgba(255,255,255,0.75);
+
+	cursor: pointer;
+	box-shadow:
+		0 10px 24px rgba(0,0,0,0.45),
+		inset 0 0 0 1px rgba(0,0,0,0.35);
+}
+
+/* help menu */
+#help_menu{
+    padding: 0 2rem;
+    width: 100%;
+    height: 100%;
+    z-index: 999; /* appears over everything */
+    top: -1000px; /* hidden by default */
+
+    position: fixed;
+    background-color: rgb(22, 22, 22);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.help_section{
+    margin-bottom: 2rem;
+}
+
+/* headings */
+#help_menu h2{
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+#help_menu h3{
+    margin-bottom: 0.5rem;
+}
+
+/* lists */
+#help_menu ul{
+    padding-left: 1.5rem;
+}
+
+#help_menu li{
+    margin-bottom: 0.4rem;
+}
+
+/* code blocks */
+#help_menu code{
+    font-family: monospace;
+    color: #7dd3fc;
+}
+
+#help_menu pre{
+    background-color: rgb(30, 30, 30);
+    padding: 0.75rem;
+    overflow-x: auto;
+}
+
+/* close button */
+.close{
+    right: 5px;
+    top:5px;
+    position: absolute;
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+
+	border: 1px solid rgba(255,255,255,0.12);
+	background: rgba(10, 14, 22, 0.65);
+	color: rgba(255,255,255,0.75);
+
+	cursor: pointer;
+	box-shadow:
+		0 10px 24px rgba(0,0,0,0.45),
+		inset 0 0 0 1px rgba(0,0,0,0.35);
+}
+
 /* win screen */
 #win_screen{
     width: 30vw;
@@ -97,6 +214,7 @@
 	margin: 0;
 	font-size: 5vh;
 }
+
 @media (max-width: 1369px){
     #win_screen {
         left: calc((100vw - 20rem) / 2); /* 20 rem is the code console's width 1369px and below */
