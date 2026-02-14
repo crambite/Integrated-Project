@@ -1,3 +1,5 @@
+import { patch_player_data } from "../../player_data/auth.js"
+
 // The Room
 const The_Room_bronze = document.getElementById("The_Room_bronze");
 const The_Room_bronze_txt = document.getElementById("The_Room_bronze_txt");
@@ -132,12 +134,13 @@ const data = JSON.parse(sessionStorage.getItem("data"));
 //map_data
 const map_list = JSON.parse(sessionStorage.getItem("map_list"));
 
-//voucher
+//$20 voucher
 if (sessionStorage.getItem("player_id") && data["Familiar_Scene"] === true && data.voucher === false) {
     alert("$20 Starbucks Voucher Sent To Your Phone Number");
 
     data.voucher = true;
     sessionStorage.setItem("data", JSON.stringify(data));
+    patch_player_data();
 }
 
 //if player dosent have a referral code
@@ -156,7 +159,7 @@ if (!data.code) {
     sessionStorage.setItem("data", JSON.stringify(data));
 }
 
-//if player redeemed the referral
+//if player redeemed the referral for the $5 voucher
 if (data.referral === true) {
     redeem.placeholder = "Redeemed";
     redeem.disabled = true;
@@ -196,6 +199,7 @@ else {
 
             data.referral = true;
             sessionStorage.setItem("data", JSON.stringify(data));
+            patch_player_data();
         }
     });
 }
@@ -297,5 +301,5 @@ function update_all_badges() {
     plat(Familiar_Scene_plat, Familiar_Scene_plat_txt);
 };
 
-//wait for window to load
+// wait for window to load
 window.addEventListener("load", update_all_badges)
