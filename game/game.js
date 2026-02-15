@@ -116,10 +116,10 @@ player_image.right.src = "assets/characters/robot_right.png"
 
 //upgraded robot sprite
 if (sessionStorage.getItem("map") === "Familiar_Scene" || data["Familiar_Scene"] === true) {
-    player_image.up.src = "assets/characters/Big_up.png";
-    player_image.down.src = "assets/characters/Big_down.png"
-    player_image.left.src = "assets/characters/Big_left.png"
-    player_image.right.src = "assets/characters/Big_right.png"
+    player_image.up.src = "assets/characters/Big_Up.png";
+    player_image.down.src = "assets/characters/Big_Down.png"
+    player_image.left.src = "assets/characters/Big_Left.png"
+    player_image.right.src = "assets/characters/Big_Right.png"
 }
 
 let current_player_image = player_image.up
