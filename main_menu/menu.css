@@ -440,3 +440,91 @@ body::after{
   gap: 10px;
   align-items: center;
 }
+/* =========================
+   Mobile LANDSCAPE — Settings page
+   ========================= */
+@media (max-height: 520px) and (orientation: landscape){
+
+  /* allow content to scroll on short screens */
+  body{
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  /* keep background locked to viewport */
+  body::before,
+  body::after{
+    position: fixed;
+  }
+
+  .screen{
+    height: auto;            /* let it grow */
+    min-height: 100%;
+    padding: 12px;
+    place-items: start center;
+  }
+
+  .panel{
+    width: min(980px, 96vw);
+    padding: 18px 18px;
+    gap: 14px;
+    border-radius: 14px;
+  }
+
+  .title{
+    font-size: 26px;         /* stable (don’t use vh) */
+    line-height: 1.1;
+  }
+
+  .subtitle{
+    font-size: 12px;
+  }
+
+  /* the inner settings card */
+  .card{
+    padding: 12px 12px 10px;
+  }
+
+  .card-title{
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .row{
+    padding: 8px 0;
+    gap: 10px;
+  }
+
+  .row-label{
+    font-size: 12px;
+  }
+
+  .value{
+    min-width: 36px;
+    font-size: 12px;
+  }
+
+  .select{
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+
+  /* footer: keep it compact */
+  .footer{
+    margin-top: 8px;
+    gap: 10px;
+  }
+
+  .primary-btn,
+  .ghost-btn{
+    height: 40px;
+    padding: 0 12px;
+  }
+
+  /* if buttons get cramped, allow wrapping nicely */
+  .footer .right{
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+}
