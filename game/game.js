@@ -235,6 +235,7 @@ function win() {
     
     //make win screen viewable
     win.style.opacity = 1;
+    win.style.pointerEvents = "all"
 
     //display badge requirements
     silver_req.textContent = `Complete the map in ${map_list[map_id + "_silver"]} turns or less.`;
