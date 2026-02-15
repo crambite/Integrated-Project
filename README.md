@@ -1,6 +1,6 @@
 # Blackbox Protocol 
 
- 
+https://crambite.github.io/Integrated-Project/
 
 Blackbox Protocol is a browser-based Python coding game that teaches programming fundamentals through interactive gameplay and narrative progression. Instead of passively reading tutorials, users actively write real Python code to control a robot navigating maze-based environments. Every movement, turn, and action is triggered through code written in an embedded editor and executed directly in the browser. 
 
@@ -62,7 +62,7 @@ Blackbox Protocol is designed for beginner programmers and students who want to 
 
 ## Wireframe 
 
- 
+We made a basic Low Fidelity Figma in the first weeks of the IP. We used basic shapes to map out where each feature was supposed to go. It helped us see how we wanted to lay things out and position our elements.
 
 # Features 
 
