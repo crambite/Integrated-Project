@@ -148,6 +148,7 @@
     left: calc((100vw - 40rem) / 2); /* 40 rem is the code console's width 1370px and above */
     opacity: 0;
 
+    pointer-events: none;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -185,7 +186,7 @@
 #next{
 
 	margin-top: 18px;
-	
+	margin-bottom: 15px;
 	width: min(640px, 90%);
 	height: 74px;
 

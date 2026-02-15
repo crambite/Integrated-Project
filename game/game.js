@@ -114,6 +114,14 @@ player_image.down.src = "assets/characters/robot_down.png"
 player_image.left.src = "assets/characters/robot_left.png"
 player_image.right.src = "assets/characters/robot_right.png"
 
+//upgraded robot sprite
+if (sessionStorage.getItem("map") === "Familiar_Scene" || data["Familiar_Scene"] === true) {
+    player_image.up.src = "assets/characters/Big_Up.png";
+    player_image.down.src = "assets/characters/Big_Down.png"
+    player_image.left.src = "assets/characters/Big_Left.png"
+    player_image.right.src = "assets/characters/Big_Right.png"
+}
+
 let current_player_image = player_image.up
 //wall
 const wall_image = new Image();
@@ -227,6 +235,7 @@ function win() {
     
     //make win screen viewable
     win.style.opacity = 1;
+    win.style.pointerEvents = "all"
 
     //display badge requirements
     silver_req.textContent = `Complete the map in ${map_list[map_id + "_silver"]} turns or less.`;

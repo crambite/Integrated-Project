@@ -27,21 +27,25 @@ const reviews = [
     text: "“One thing I am able to do now, that I could not do before, is actually believe I can code.”",
     name: "Middle School Student",
     sub: "Classroom Pilot Program",
+    avatar: "AD"
   },
   {
-    text: "“The puzzles felt like a game, but I still learned real logic. It didn’t feel like homework.”",
+    text: "“The puzzles felt like a game, but I still learned real logic. It didn't feel like homework.”",
     name: "Student",
     sub: "After-school Coding Club",
+    avatar: "RL"
   },
   {
-    text: "“Clear progression, strong engagement. Students stayed focused longer than usual lessons.”",
+    text: "“Clear progression, strong engagement. I started using Blackbox Protocol in my lessons and students have never been more engaged.”",
     name: "Teacher",
     sub: "Secondary School",
+    avatar: "LJ"
   },
   {
     text: "“The story hooks them. They ask to replay levels just to optimize their code.”",
     name: "Facilitator",
     sub: "Enrichment Program",
+    avatar: "DT"
   },
 ];
 
@@ -51,6 +55,7 @@ const reviewText = document.getElementById("reviewText");
 const reviewName = document.getElementById("reviewName");
 const reviewSub = document.getElementById("reviewSub");
 const dotButtons = document.querySelectorAll('.dots .dot');
+const avatar = document.getElementById("avatar");
 
 function setActiveDot(i){
   dotButtons.forEach(d => d.classList.remove("is-active"));
@@ -64,6 +69,7 @@ function renderReview(i){
   reviewText.textContent = r.text;
   reviewName.textContent = r.name;
   reviewSub.textContent = r.sub;
+  avatar.textContent = r.avatar;
   setActiveDot(i);
 }
 
@@ -103,18 +109,18 @@ const updates = [
   },
   {
     date: "May 11, 2026",
-    title: "New Level Builder Tools",
-    text: "Creators can now prototype puzzle layouts faster with snap-to-grid placement and test runs.",
+    title: "Voucher Management Screen",
+    text: "Users can view and manage their vouchers.",
   },
   {
     date: "Jun 02, 2026",
-    title: "Progress Saving Improvements",
-    text: "Smoother checkpoints and clearer completion states across maps—less friction, more play.",
+    title: "Smart Enemy AI",
+    text: "Enemies now have a smarter AI an can actively search for and shoot the player on their turn.",
   },
   {
-    date: "Jul 18, 2026",
-    title: "Classroom Analytics (Beta)",
-    text: "Teachers can view completion trends and where learners get stuck—without distracting the player.",
+    date: "Sep 18, 2026",
+    title: "Procedurally Generated Mazes",
+    text: "Players can now access an infinite level after completing the main game.",
   },
 ];
 
