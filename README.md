@@ -93,17 +93,27 @@ https://lottiefiles.com/
 AI tools were used to assist in the development of certain features and debugging processes. 
 
 ## Pyodide Integration 
+ChatGPT was used to help structure asynchronous loading logic, inject JavaScript functions into the Python runtime, and handle error-catching scenarios. The sample of the code used can be found in (README_STUFF/examples/pyodide_sample.html). I then edited the code for the full integration on the website
 
-ChatGPT was used to help structure asynchronous loading logic, inject JavaScript functions into the Python runtime, and handle error-catching scenarios. 
+## Ace Integration
+ChatGPT was used to setup the Ace integration. The sample of the code used can be found in (README_STUFF/examples/ace_sample.html). I then edited the code for the full integration on the website
 
- 
+## Canvas Reszie
+ChatGPT was used to write the formulas and the skeleton of the resizable canvas. The sample of the code used can be found in (README_STUFF/examples/canvas_resize_sample.html). I then edited the code for the full integration on the website
 
-## Movement Queue System 
+## Lottie Integration
+ChatGPT was used to write skeleton of the lottie loading screen. The sample of the code used can be found in (README_STUFF/examples/lottie_sample.html). I then edited the code for the full integration on the website
 
-ChatGPT assisted in refining the interval execution logic and debugging collision edge cases. 
+## Three Layers
+I used ChatGPT to help me understand how to do proper layering and allowing me to have the 3D model still be interactable
+![sample img](README_STUFF/layer.png)
 
 ## RESTDB Integration 
-ChatGPT helped construct PATCH requests, configure API headers, and debug asynchronous update issues. 
+ChatGPT helped construct PATCH requests, configure API headers, and debug asynchronous update issues. ChatGPT also helped with the login authentication and account creation. I then edited the code to fix the parts that were not working and added a function to patch player data. 
+![sample img](README_STUFF/auth.png)
+
+## Debugging
+ChatGPT was used to debug code and suggest fixes for errors.
 
 # Testing 
 
@@ -216,16 +226,20 @@ Creating an infinite loop in the text editor crashes the website (unresolved)
 Pyodide runs asynchronously with JavaScript, therefore spamming the queue to move the player and crashing the website when while true is used (resolved) 
 Spamming run multiple times would cause the Pyodide to run the code multiple times (resolved) 
 
-# Credits 
+# Credits
 
 ## Content 
+Original content was used for this project.
 
 ## Media 
-Lottie animations were obtained from https://lottiefiles.com 
+https://lottiefiles.com (Lottie)
+https://kitbash3d.com/pages/cargo (drones)
+https://sketchfab.com/3d-models/bear-da9b588f7a7346519f391c3eb9532226 (bear)
+https://stock.adobe.com/search?k=3d+futuristic+world+map (world map)
 
 ## Acknowledgements 
-Inspiration was drawn from gamification frameworks such as Bartle’s Player Types and intrinsic/extrinsic motivation models. 
-
- 
-
- 
+Code Combat inspired the idea of teaching code through a game.
+Coursera inspired the certificate system.
+Duolingo inspired the use of badges as visible indicators of progress and achievement.
+Trust inspired the referral system. 
+Grab inspired the use of voucher-based rewards.
