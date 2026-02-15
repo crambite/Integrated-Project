@@ -55,7 +55,7 @@ body{
 /* Container */
 #robot_ui{
     position: fixed;
-    top: 70vh;
+    top: 85vh;
     left: 20px;
     z-index: 998;
 
